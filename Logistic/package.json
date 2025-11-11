@@ -1,0 +1,19 @@
+{
+  "name": "logistic",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "sass": "sass --watch styles/scss:wwwroot/css",
+    "sass-build": "sass styles/scss/main.scss:wwwroot/css/main.css --style=compressed"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "sass": "^1.93.2"
+  },
+  "dependencies": {
+    "f": "^1.4.0"
+  }
+}

@@ -1,0 +1,127 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>
+            @ViewData ["Title"] - Logistic
+        </title>
+        <!-- compiled css from wwwroot -->
+        <link rel="stylesheet" href="~/css/home.css" />
+        <link rel="stylesheet" href="~/css/contact.css" />
+        <link rel="stylesheet" href="~/css/custom.css" />
+        <link rel="stylesheet" href="~/css/swiper-bundle.min.css" />
+        <link rel="stylesheet" href="~/css/animate.min.css" />
+        <link rel="stylesheet" href="~/css/bootstrap-icons.css" />
+        <link rel="stylesheet" href="~/css/bootstrap.min.css" />
+        <script src="~/js/swiper-bundle.min.js"></script>
+        <script src="~/js/bootstrap.bundle.min.js"></script>
+        <script src="~/js/jquery.min.js"></script>
+    </head>
+    <body>
+        <header class="main-header">
+            <nav class="navbar navbar-expand-lg bg-white shadow-sm">
+                <div class="container align-items-center">
+                    <!-- LOGO -->
+                    <a class="navbar-brand d-flex align-items-center gap-2" href="#">
+                        <img src="~/media/Adani-logo.svg" alt="Adani Logo" class="brand-logo">
+                    </a>
+
+                    <!-- Mobile Toggle -->
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <!-- NAV MENU -->
+                    <div class="collapse navbar-collapse justify-content-end" id="mainNavbar">
+                        <ul class="navbar-nav gap-lg-4">
+                            <li class="nav-item">
+                                <a class="nav-link active" href="#">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">About Us</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Our Warehouses</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Sustainability</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Newsroom</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Contact Us</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <main>
+            @RenderBody()
+            @if (IsSectionDefined("PageSections"))
+            {
+                @RenderSection("PageSections", required: false)
+            }
+        </main>
+    <footer class="main-footer">
+        <div class="footer-top py-5">
+            <div class="container">
+                <div class="row align-items-center">
+
+                    <!-- Menu Column 1 -->
+                    <div class="col-6 col-md-4 mb-4">
+                        <ul class="footer-menu">
+                            <li><a href="#">Home</a></li>
+                            <li><a href="#">About Us</a></li>
+                            <li><a href="#">Our Warehouses</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Menu Column 2 -->
+                    <div class="col-6 col-md-4 mb-4">
+                        <ul class="footer-menu">
+                            <li><a href="#">Sustainability</a></li>
+                            <li><a href="#">Newsroom</a></li>
+                            <li><a href="#">Contact Us</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Social + Logo -->
+                    <div class="col-12 col-md-4 text-center text-md-center mt-4 mt-md-0">
+                        <!-- Social Icons -->
+                        <div class="footer-social d-flex justify-content-md-center justify-content-center gap-4 mb-4">
+                            <a href="#"><i class="bi bi-twitter"></i></a>
+                            <a href="#"><i class="bi bi-linkedin"></i></a>
+                            <a href="#"><i class="bi bi-facebook"></i></a>
+                            <a href="#"><i class="bi bi-youtube"></i></a>
+                            <a href="#"><i class="bi bi-instagram"></i></a>
+                        </div>
+
+                        <!-- Logo -->
+                        <img src="~/media/footer-logo.svg" alt="Adani Logo" class="footer-logo">
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Small Bar -->
+        <div class="footer-bottom py-3">
+            <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center">
+                <p class="mb-2 mb-md-0">2025 © Adani Group</p>
+                <ul class="footer-policy d-flex gap-3">
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Legal Disclaimer</a></li>
+                    <li><a href="#">Terms & Conditions</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+        <script src="~/js/main.js"></script>
+        <script src="~/js/homepage.js"></script>
+        <script src="~/js/homepage-map.js"></script>
+    </body>
+</html>

@@ -1,0 +1,201 @@
+﻿<section class="home-map-section">
+    <div class="p-4">
+        <div class="row g-5">
+            <div class="col-lg-6">
+                <div class="home-map-box">
+                    @Html.Partial("~/Views/Sublayouts/HomePageMapsvg.cshtml")
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="home-map-card">
+                        <h2 class="home-map-title">
+                            Building Data Centers<br>Across India with a
+                            <span class="highlight-edge">Global Edge</span>
+                        </h2>
+                        <p class="home-map-subtext">
+                            This section is about data center presence in India and throughout the world.
+                        </p>
+                    <!-- Tabs -->
+                    <ul class="nav nav-tabs home-map-tabs" id="homeMaptab" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link home-map-tab active" id="india-tab" data-bs-toggle="tab" data-bs-target="#india-panel" type="button" role="tab">India</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link home-map-tab" id="southamerica-tab" data-bs-toggle="tab" data-bs-target="#southamerica-panel" type="button" role="tab">South-America</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link home-map-tab" id="northamerica-tab" data-bs-toggle="tab" data-bs-target="#northamerica-panel" type="button" role="tab">North-America</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link home-map-tab" id="emea-tab" data-bs-toggle="tab" data-bs-target="#emea-panel" type="button" role="tab">EMEA</button>
+                        </li>
+                    </ul>
+
+                    <!-- Tab Content -->
+                    <div class="tab-content home-map-tab-content mt-4" id="homeMapTabContent">
+                        <div class="tab-pane fade show active" id="india-panel">
+
+                            <!-- Dropdown Button -->
+                            <div class="home-map-location mb-2">
+                                <button class="city-select-btn" id="cityToggle">
+                                    <span class="d-flex align-items-center">
+                                        <img src="/media/india-flag.svg" alt="India">
+                                        <span id="selectedCity">Navi Mumbai, IN</span>
+                                    </span>
+                                    <div class="dropdown-container">
+                                        <img id="dropdownArrow" src="/media/down-arrow.svg" alt="arrow">
+                                    </div>
+                                </button>
+
+                                <!-- Dropdown -->
+                                <div id="cityDropdown" class="city-dropdown">
+                                    <div class="dropdown-item active" data-mapkey="mumbai">
+                                        <img src="/media/india-flag.svg" alt="India"> Navi Mumbai, IN
+                                    </div>
+                                    <div class="dropdown-item" data-mapkey="chennai">
+                                        <img src="/media/india-flag.svg" alt="India"> Chennai, IN
+                                    </div>
+                                    <div class="dropdown-item" data-mapkey="hyderabad">
+                                        <img src="/media/india-flag.svg" alt="India"> Hyderabad, IN
+                                    </div>
+                                    <div class="dropdown-item" data-mapkey="pune">
+                                        <img src="/media/india-flag.svg" alt="India"> Pune, IN
+                                    </div>
+                                    <div class="dropdown-item" data-mapkey="noida">
+                                        <img src="/media/india-flag.svg" alt="India"> Noida, IN
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Static City Cards -->
+                            <div id="cityCards">
+
+                                <!-- Navi Mumbai Cards (Default Visible) -->
+                                <div class="city-card-group d-flex gap-2" id="city-mumbai">
+                                    <div class="cx-card">
+                                        <img src="~/media/co2.svg">
+                                        <h3 class="card-metric">33MW</h3>
+                                        <p class="card-label">Potential Capacity</p>
+                                    </div>
+                                    <div class="cx-card">
+                                        <img src="~/media/renewable-energy.svg">
+                                        <h3 class="card-metric">99.999%</h3>
+                                        <p class="card-label">Availability</p>
+                                    </div>
+                                    <div class="cx-card">
+                                        <img src="~/media/waste-landfill.svg">
+                                        <h3 class="card-metric">100%</h3>
+                                        <p class="card-label">Renewable Energy</p>
+                                    </div>
+                                </div>
+
+                                <!-- Chennai Cards -->
+                                <div class="city-card-group d-none d-flex gap-2" id="city-chennai">
+                                    <div class="cx-card">
+                                        <img src="~/media/co2.svg">
+                                        <h3 class="card-metric">45MW</h3>
+                                        <p class="card-label">Potential Capacity</p>
+                                    </div>
+                                    <div class="cx-card">
+                                        <img src="~/media/renewable-energy.svg">
+                                        <h3 class="card-metric">99.995%</h3>
+                                        <p class="card-label">Availability</p>
+                                    </div>
+                                    <div class="cx-card">
+                                        <img src="~/media/waste-landfill.svg">
+                                        <h3 class="card-metric">85%</h3>
+                                        <p class="card-label">Renewable Energy</p>
+                                    </div>
+                                </div>
+
+                                <!-- Hyderabad Cards -->
+                                <div class="city-card-group d-none d-flex gap-2" id="city-hyderabad">
+                                    <div class="cx-card">
+                                        <img src="~/media/co2.svg">
+                                        <h3 class="card-metric">50MW</h3>
+                                        <p class="card-label">Potential Capacity</p>
+                                    </div>
+                                    <div class="cx-card">
+                                        <img src="~/media/renewable-energy.svg">
+                                        <h3 class="card-metric">99.999%</h3>
+                                        <p class="card-label">Availability</p>
+                                    </div>
+                                    <div class="cx-card">
+                                        <img src="~/media/waste-landfill.svg">
+                                        <h3 class="card-metric">100%</h3>
+                                        <p class="card-label">Renewable Energy</p>
+                                    </div>
+                                </div>
+
+                                <!-- Pune Cards -->
+                                <div class="city-card-group d-none d-flex gap-2" id="city-pune">
+                                    <div class="cx-card">
+                                        <img src="~/media/co2.svg">
+                                        <h3 class="card-metric">25MW</h3>
+                                        <p class="card-label">Potential Capacity</p>
+                                    </div>
+                                    <div class="cx-card">
+                                        <img src="~/media/renewable-energy.svg">
+                                        <h3 class="card-metric">99.990%</h3>
+                                        <p class="card-label">Availability</p>
+                                    </div>
+                                    <div class="cx-card">
+                                        <img src="~/media/waste-landfill.svg">
+                                        <h3 class="card-metric">70%</h3>
+                                        <p class="card-label">Renewable Energy</p>
+                                    </div>
+                                </div>
+
+                                <!-- Noida Cards -->
+                                <div class="city-card-group d-none d-flex gap-2" id="city-noida">
+                                    <div class="cx-card">
+                                        <img src="~/media/co2.svg">
+                                        <h3 class="card-metric">40MW</h3>
+                                        <p class="card-label">Potential Capacity</p>
+                                    </div>
+                                    <div class="cx-card">
+                                        <img src="~/media/renewable-energy.svg">
+                                        <h3 class="card-metric">99.999%</h3>
+                                        <p class="card-label">Availability</p>
+                                    </div>
+                                    <div class="cx-card">
+                                        <img src="~/media/waste-landfill.svg">
+                                        <h3 class="card-metric">95%</h3>
+                                        <p class="card-label">Renewable Energy</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Buttons (Dynamic Explore text) -->
+                            <a href="#" id="exploreBtn" class="btn-gradient btn">Explore DC</a>
+                            <a href="#" class="btn-secondary-dark">Learn more about capabilities and features</a>
+                        </div>
+
+
+                        <div class="tab-pane fade home-map-details" id="southamerica-panel" role="tabpanel" data-map="southamerica">
+                            <!-- Buttons -->
+                            <p>Our North American data centers deliver high-performance infrastructure with unmatched reliability. Strategically located facilities ensure speed, scalability, and security for global enterprises.</p>
+                            <a href="#" class="btn-gradient btn">Explore Navi Mumbai DC</a>
+                            <a href="#" class="btn-secondary-dark">Learn more about capabilities and features</a>
+                        </div>
+
+                        <div class="tab-pane fade home-map-details" id="northamerica-panel" role="tabpanel" data-map="northamerica">
+                            <!-- Buttons -->
+                            <p>Our North American data centers deliver high-performance infrastructure with unmatched reliability. Strategically located facilities ensure speed, scalability, and security for global enterprises.</p>
+                            <a href="#" class="btn-gradient btn">Explore Navi Mumbai DC</a>
+                            <a href="#" class="btn-secondary-dark">Learn more about capabilities and features</a>
+                        </div>
+
+                        <div class="tab-pane fade home-map-details" id="emea-panel" role="tabpanel" data-map="emea">
+                            <!-- Buttons -->
+                            <p>Our North American data centers deliver high-performance infrastructure with unmatched reliability. Strategically located facilities ensure speed, scalability, and security for global enterprises.</p>
+                            <a href="#" class="btn-gradient btn">Explore Navi Mumbai DC</a>
+                            <a href="#" class="btn-secondary-dark">Learn more about capabilities and features</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

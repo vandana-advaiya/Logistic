@@ -313,3 +313,294 @@ body {
         text-align: center;
     }
 }
+
+.websites-section {
+    position: relative;
+    overflow: hidden; // prevents unwanted scrollbars
+
+    .section-title {
+        font-size: 24px;
+        font-weight: 700;
+        color: #00349e;
+    }
+
+    .swiper {
+        padding-bottom: 30px; // normal padding for spacing
+    }
+    // ✅ Arrows positioned outside swiper, relative to container
+    .swiper-button-next,
+    .swiper-button-prev {
+        position: absolute;
+        top: 55%;
+        transform: translateY(-50%);
+        color: #00349e;
+        z-index: 10;
+        background: #fff;
+        border-radius: 50%;
+        width: 38px;
+        height: 38px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: 0.3s;
+
+        &::after {
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        &:hover {
+            background: #00349e;
+            color: #fff;
+        }
+    }
+
+    .swiper-button-next {
+        right: 30px; // outside container but not overflowing viewport
+    }
+
+    .swiper-button-prev {
+        left: 30px;
+    }
+
+    .website-card {
+        width: 130px;
+        height: 130px;
+        border-radius: 20px;
+        overflow: hidden;
+        margin: 0 auto;
+        background-color: #fff;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+        transition: transform 0.3s ease;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        &:hover {
+            transform: translateY(-5px);
+        }
+    }
+
+    .website-name {
+        font-size: 15px;
+        font-weight: 500;
+        color: #111;
+    }
+
+    @media (max-width: 768px) {
+        .swiper-button-next,
+        .swiper-button-prev {
+            display: none; // hide arrows on small screens (swipe instead)
+        }
+    }
+}
+
+.hero-banner {
+    margin-top: 0; // sits directly under header
+    position: relative;
+
+    .carousel {
+        .carousel-inner {
+            .carousel-item {
+                height: 75vh; // adjust for hero height
+                min-height: 500px;
+                position: relative;
+
+                .banner-img {
+                    object-fit: cover;
+                    height: 100%;
+                    filter: brightness(0.8); // darken slightly for text contrast
+                }
+
+                .carousel-caption {
+                    position: absolute;
+                    bottom: 15%;
+                    left: 5%;
+                    text-align: left;
+                    max-width: 600px;
+
+                    .banner-title {
+                        font-size: 2.5rem;
+                        font-weight: 700;
+                        color: #fff;
+                    }
+
+                    .banner-subtitle {
+                        font-size: 1.1rem;
+                        color: #e0e0e0;
+                        max-width: 550px;
+                    }
+                }
+            }
+        }
+
+        .carousel-control-prev,
+        .carousel-control-next {
+            width: 5%;
+            filter: invert(1) brightness(1.5);
+        }
+
+        .carousel-indicators [data-bs-target] {
+            background-color: #fff;
+            opacity: 0.6;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            margin: 0 6px;
+
+            &.active {
+                opacity: 1;
+                background-color: #00349e;
+            }
+        }
+    }
+
+    @media (max-width: 768px) {
+        .carousel-inner .carousel-item .carousel-caption {
+            bottom: 10%;
+            left: 8%;
+
+            .banner-title {
+                font-size: 1.8rem;
+            }
+
+            .banner-subtitle {
+                font-size: 0.95rem;
+            }
+        }
+    }
+}
+
+.our-presence-section {
+    background: #fff;
+
+    .map-img {
+        max-width: 90%;
+        position: relative;
+    }
+    /* ✅ Actual map pin markers instead of red circles */
+    .map-pin {
+        position: absolute;
+        width: 15px;
+        height: 30px;
+        background: url('/media/map-pin.svg') no-repeat center center;
+        background-size: contain;
+        border: none;
+        cursor: pointer;
+        transform: translate(-50%, -100%);
+        transition: transform 0.3s ease, filter 0.3s ease;
+
+        &:hover {
+            transform: translate(-50%, -110%) scale(1.1);
+            filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.25));
+        }
+
+        &.active {
+            transform: translate(-50%, -110%) scale(1.25);
+            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+        }
+    }
+    /* Optional keyframe for pulse effect */
+    @keyframes pin-pulse {
+        from {
+            transform: translate(-50%, -50%) scale(1);
+            opacity: 1;
+        }
+
+        to {
+            transform: translate(-50%, -50%) scale(2.5);
+            opacity: 0;
+        }
+    }
+
+    .map-tooltip {
+        position: absolute;
+        display: none;
+        background: #000;
+        color: #fff;
+        padding: 4px 8px;
+        border-radius: 4px;
+        font-size: 13px;
+        transform: translate(-50%, -120%);
+        white-space: nowrap;
+        pointer-events: none;
+        z-index: 100;
+    }
+
+    .section-title {
+        color: #00349e;
+        font-size: 28px;
+        font-weight: 700;
+    }
+
+    .section-text {
+        color: #444;
+        font-size: 15px;
+        line-height: 1.6;
+    }
+
+    .presence-tabs {
+        background: #f5f5f5;
+        border-radius: 25px;
+        padding: 4px;
+        width: fit-content;
+
+        .tab-btn {
+            border: none;
+            background: transparent;
+            padding: 6px 16px;
+            font-weight: 600;
+            border-radius: 25px;
+            transition: 0.3s;
+            color: #555;
+
+            &.active {
+                background: #00349e;
+                color: #fff;
+            }
+        }
+    }
+
+    .location-info {
+        .info-img {
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .location-details {
+            background: #eaf3ff;
+
+            .divider {
+                width: 1px;
+                height: 40px;
+                background: #ccc;
+            }
+        }
+
+        .explore-link {
+            color: #00349e;
+            font-weight: 500;
+            text-decoration: none;
+            float: inline-end;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+
+    @media (max-width: 768px) {
+        .map-img {
+            max-width: 100%;
+        }
+
+        .map-pin {
+            width: 20px;
+            height: 28px;
+        }
+    }
+}

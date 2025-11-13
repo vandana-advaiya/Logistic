@@ -1,22 +1,37 @@
 ﻿@use './partials/variable.scss' as *;
 @use './partials/_mixins.scss' as *;
+@use './partials/_fonts.scss' as *;
 
+
+@font-face {
+    font-family: AdaniSemiBold;
+    src: url("/fonts/AALP/Adani-SemiBold.woff");
+}
+
+@font-face {
+    font-family: AdaniRegular;
+    src: url("/fonts/AALP/Adani-Regular_1.woff");
+}
+
+@font-face {
+    font-family: AdaniMedium;
+    src: url("/fonts/AALP/Adani-Medium.woff");
+}
 
 .contact-section {
     background: #fff;
 
     .section-title {
-        font-size: 56px;
-        font-weight: 700;
+        font-family: AdaniRegular !important;
         color: #000;
+        text-align: left;
     }
 
     .section-desc {
-        max-width: 850px;
-        margin: 0 auto;
         color: #444;
         font-size: 15px;
         line-height: 1.6;
+        text-align: left;
     }
 
     .office-img {
@@ -31,6 +46,12 @@
         padding-left: 16px;
         margin-bottom: 30px;
 
+        .fw-bold {
+            color: #063293;
+            font-weight: 600;
+            font-size: 30px;
+        }
+
         .office-title {
             color: #00349e;
             font-size: 16px;
@@ -39,8 +60,9 @@
 
         .office-text {
             color: #444;
-            font-size: 14px;
+            font-size: 20px;
             line-height: 1.6;
+            font-weight:500;
         }
 
         a {

@@ -1,20 +1,11 @@
 ﻿<section id="heroBanner" class="hero-banner position-relative">
-    <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel">
-
-        <!-- Carousel Indicators -->
-        <div class="carousel-indicators">
-            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
-            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
-        </div>
-
-        <!-- Carousel Items -->
-        <div class="carousel-inner">
+    <div class="swiper heroSwiper">
+        <div class="swiper-wrapper">
 
             <!-- Slide 1 -->
-            <div class="carousel-item active">
-                <img src="~/media/Logistic-Banner01.svg" class="d-block w-100 banner-img" alt="Adani Logistic Park">
-                <div class="carousel-caption text-start">
+            <div class="swiper-slide">
+                <img src="~/media/Logistic-Banner01.svg" class="banner-img" alt="Adani Logistic Park">
+                <div class="hero-caption">
                     <h2 class="banner-title">Shaping the Industry</h2>
                     <p class="banner-subtitle">
                         Leading the way by collaborating with our customers,
@@ -24,9 +15,9 @@
             </div>
 
             <!-- Slide 2 -->
-            <div class="carousel-item">
-                <img src="~/media/Logistic-Banner01.svg" class="d-block w-100 banner-img" alt="Warehouse Facility">
-                <div class="carousel-caption text-start">
+            <div class="swiper-slide">
+                <img src="~/media/Logistic-Banner01.svg" class="banner-img" alt="Warehouse Facility">
+                <div class="hero-caption">
                     <h2 class="banner-title">Expanding Horizons</h2>
                     <p class="banner-subtitle">
                         Pioneering modern logistics infrastructure across India.
@@ -35,25 +26,22 @@
             </div>
 
             <!-- Slide 3 -->
-            <div class="carousel-item">
-                <img src="~/media/Logistic-Banner01.svg" class="d-block w-100 banner-img" alt="Logistics Operations">
-                <div class="carousel-caption text-start">
+            <div class="swiper-slide">
+                <img src="~/media/About-us-carousel-image.svg" class="banner-img" alt="Logistics Operations">
+                <div class="hero-caption">
                     <h2 class="banner-title">Driving Sustainability</h2>
                     <p class="banner-subtitle">
                         Committed to environmentally responsible and efficient solutions.
                     </p>
                 </div>
             </div>
+
         </div>
 
-        <!-- Controls -->
-        <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-        </button>
+        <!-- Pagination Dots Only -->
+        <div class="swiper-pagination"></div>
     </div>
 </section>
+
+
+

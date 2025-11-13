@@ -1,4 +1,64 @@
 @charset "UTF-8";
+@font-face {
+  font-family: "Roboto";
+  src: url("/assets/fonts/Roboto.eot");
+  src: url("/assets/fonts/Roboto.eot?#iefix") format("embedded-opentype"), url("/assets/fonts/Roboto.woff2") format("woff2"), url("/assets/fonts/Roboto.ttf") format("truetype"), url("/assets/fonts/Roboto.svg#Roboto") format("svg");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Roboto-Medium";
+  src: url("/assets/fonts/Roboto-Medium.eot");
+  src: url("/assets/fonts/Roboto-Medium.eot?#iefix") format("embedded-opentype"), url("/assets/fonts/Roboto-Medium.woff2") format("woff2"), url("/assets/fonts/Roboto-Medium.ttf") format("truetype"), url("/assets/fonts/Roboto-Medium.svg#Roboto-Medium") format("svg");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Roboto-Bold";
+  src: url("/assets/fonts/Roboto-Bold.eot");
+  src: url("/assets/fonts/Roboto-Bold.eot?#iefix") format("embedded-opentype"), url("/assets/fonts/Roboto-Bold.woff2") format("woff2"), url("/assets/fonts/Roboto-Bold.ttf") format("truetype"), url("/assets/fonts/Roboto-Bold.svg#Roboto-Bold") format("svg");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "IconFont";
+  src: url("/assets/fonts/iconfont.eot");
+  src: url("/assets/fonts/iconfont.eot?#iefix") format("embedded-opentype"), url("/assets/fonts/iconfont.woff2") format("woff2"), url("/assets/fonts/iconfont.ttf") format("truetype"), url("/assets/fonts/iconfont.svg#IconFont") format("svg");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Adani-Bold";
+  src: url("/assets/fonts/Adani-Bold.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Adani-Medium";
+  src: url("/assets/fonts/Adani-Medium.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Adani-Regular";
+  src: url("/assets/fonts/Adani-Regular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Adani-SemiBold";
+  src: url("/assets/fonts/Adani-SemiBold.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
 body {
   background-color: #f4f4f4;
   font-family: Arial, sans-serif;
@@ -238,7 +298,6 @@ body {
   object-fit: cover;
 }
 
-/* ✅ Responsive Adjustments */
 @media (max-width: 767px) {
   .chairman-img-box {
     order: 2;
@@ -324,62 +383,60 @@ body {
 }
 
 .hero-banner {
-  margin-top: 0;
   position: relative;
 }
-.hero-banner .carousel .carousel-inner .carousel-item {
+.hero-banner .heroSwiper {
+  width: 100%;
   height: 75vh;
   min-height: 500px;
+}
+.hero-banner .heroSwiper .swiper-slide {
   position: relative;
 }
-.hero-banner .carousel .carousel-inner .carousel-item .banner-img {
-  object-fit: cover;
+.hero-banner .heroSwiper .swiper-slide .banner-img {
+  width: 100%;
   height: 100%;
+  object-fit: cover;
   filter: brightness(0.8);
 }
-.hero-banner .carousel .carousel-inner .carousel-item .carousel-caption {
+.hero-banner .heroSwiper .swiper-slide .hero-caption {
   position: absolute;
   bottom: 15%;
   left: 5%;
-  text-align: left;
+  z-index: 10;
   max-width: 600px;
 }
-.hero-banner .carousel .carousel-inner .carousel-item .carousel-caption .banner-title {
+.hero-banner .heroSwiper .swiper-slide .hero-caption .banner-title {
   font-size: 2.5rem;
   font-weight: 700;
   color: #fff;
 }
-.hero-banner .carousel .carousel-inner .carousel-item .carousel-caption .banner-subtitle {
+.hero-banner .heroSwiper .swiper-slide .hero-caption .banner-subtitle {
   font-size: 1.1rem;
   color: #e0e0e0;
-  max-width: 550px;
 }
-.hero-banner .carousel .carousel-control-prev,
-.hero-banner .carousel .carousel-control-next {
-  width: 5%;
-  filter: invert(1) brightness(1.5);
+.hero-banner {
+  /* Custom Pagination Dots */
 }
-.hero-banner .carousel .carousel-indicators [data-bs-target] {
-  background-color: #fff;
-  opacity: 0.6;
+.hero-banner .swiper-pagination-bullet {
   width: 10px;
   height: 10px;
-  border-radius: 50%;
-  margin: 0 6px;
+  background: #fff;
+  opacity: 0.6;
+  margin: 0 6px !important;
 }
-.hero-banner .carousel .carousel-indicators [data-bs-target].active {
+.hero-banner .swiper-pagination-bullet-active {
+  background: #00349e;
   opacity: 1;
-  background-color: #00349e;
 }
 @media (max-width: 768px) {
-  .hero-banner .carousel-inner .carousel-item .carousel-caption {
-    bottom: 10%;
-    left: 8%;
+  .hero-banner .hero-caption {
+    bottom: 10% !important;
   }
-  .hero-banner .carousel-inner .carousel-item .carousel-caption .banner-title {
+  .hero-banner .hero-caption .banner-title {
     font-size: 1.8rem;
   }
-  .hero-banner .carousel-inner .carousel-item .carousel-caption .banner-subtitle {
+  .hero-banner .hero-caption .banner-subtitle {
     font-size: 0.95rem;
   }
 }

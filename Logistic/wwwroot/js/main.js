@@ -39,6 +39,22 @@ var ourWebsiteSwiper = new Swiper(".websitesSwiper", {
     },
 });
 
+var heroSwiper = new Swiper(".heroSwiper", {
+    loop: true,
+    autoplay: {
+        delay: 3500,
+        disableOnInteraction: false,
+    },
+    effect: "fade",
+    fadeEffect: {
+        crossFade: true
+    },
+    pagination: {
+        el: ".swiper-pagination",
+        clickable: true
+    }
+});
+
 const pins = document.querySelectorAll(".map-pin");
 const tooltip = document.getElementById("tooltip");
 

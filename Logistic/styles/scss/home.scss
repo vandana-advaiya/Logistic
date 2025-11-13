@@ -1,5 +1,6 @@
 ﻿@use './partials/variable.scss' as *;
 @use './partials/_mixins.scss' as *;
+@use './partials/_fonts.scss' as *;
 @use 'sass:color';
 
 body {
@@ -302,7 +303,6 @@ body {
     }
 }
 
-/* ✅ Responsive Adjustments */
 @media (max-width: 767px) {
     .chairman-img-box {
         order: 2;
@@ -400,69 +400,60 @@ body {
 }
 
 .hero-banner {
-    margin-top: 0; // sits directly under header
     position: relative;
 
-    .carousel {
-        .carousel-inner {
-            .carousel-item {
-                height: 75vh; // adjust for hero height
-                min-height: 500px;
-                position: relative;
+    .heroSwiper {
+        width: 100%;
+        height: 75vh;
+        min-height: 500px;
 
-                .banner-img {
-                    object-fit: cover;
-                    height: 100%;
-                    filter: brightness(0.8); // darken slightly for text contrast
-                }
+        .swiper-slide {
+            position: relative;
 
-                .carousel-caption {
-                    position: absolute;
-                    bottom: 15%;
-                    left: 5%;
-                    text-align: left;
-                    max-width: 600px;
-
-                    .banner-title {
-                        font-size: 2.5rem;
-                        font-weight: 700;
-                        color: #fff;
-                    }
-
-                    .banner-subtitle {
-                        font-size: 1.1rem;
-                        color: #e0e0e0;
-                        max-width: 550px;
-                    }
-                }
+            .banner-img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                filter: brightness(0.8);
             }
-        }
 
-        .carousel-control-prev,
-        .carousel-control-next {
-            width: 5%;
-            filter: invert(1) brightness(1.5);
-        }
+            .hero-caption {
+                position: absolute;
+                bottom: 15%;
+                left: 5%;
+                z-index: 10;
+                max-width: 600px;
 
-        .carousel-indicators [data-bs-target] {
-            background-color: #fff;
-            opacity: 0.6;
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            margin: 0 6px;
+                .banner-title {
+                    font-size: 2.5rem;
+                    font-weight: 700;
+                    color: #fff;
+                }
 
-            &.active {
-                opacity: 1;
-                background-color: #00349e;
+                .banner-subtitle {
+                    font-size: 1.1rem;
+                    color: #e0e0e0;
+                }
             }
         }
     }
+    /* Custom Pagination Dots */
+    .swiper-pagination-bullet {
+        width: 10px;
+        height: 10px;
+        background: #fff;
+        opacity: 0.6;
+        margin: 0 6px !important;
+    }
+
+    .swiper-pagination-bullet-active {
+        background: #00349e;
+        opacity: 1;
+    }
 
     @media (max-width: 768px) {
-        .carousel-inner .carousel-item .carousel-caption {
-            bottom: 10%;
-            left: 8%;
+        .hero-caption {
+            bottom: 10% !important;
 
             .banner-title {
                 font-size: 1.8rem;

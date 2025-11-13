@@ -1,17 +1,88 @@
+@font-face {
+  font-family: "Roboto";
+  src: url("/assets/fonts/Roboto.eot");
+  src: url("/assets/fonts/Roboto.eot?#iefix") format("embedded-opentype"), url("/assets/fonts/Roboto.woff2") format("woff2"), url("/assets/fonts/Roboto.ttf") format("truetype"), url("/assets/fonts/Roboto.svg#Roboto") format("svg");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Roboto-Medium";
+  src: url("/assets/fonts/Roboto-Medium.eot");
+  src: url("/assets/fonts/Roboto-Medium.eot?#iefix") format("embedded-opentype"), url("/assets/fonts/Roboto-Medium.woff2") format("woff2"), url("/assets/fonts/Roboto-Medium.ttf") format("truetype"), url("/assets/fonts/Roboto-Medium.svg#Roboto-Medium") format("svg");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Roboto-Bold";
+  src: url("/assets/fonts/Roboto-Bold.eot");
+  src: url("/assets/fonts/Roboto-Bold.eot?#iefix") format("embedded-opentype"), url("/assets/fonts/Roboto-Bold.woff2") format("woff2"), url("/assets/fonts/Roboto-Bold.ttf") format("truetype"), url("/assets/fonts/Roboto-Bold.svg#Roboto-Bold") format("svg");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "IconFont";
+  src: url("/assets/fonts/iconfont.eot");
+  src: url("/assets/fonts/iconfont.eot?#iefix") format("embedded-opentype"), url("/assets/fonts/iconfont.woff2") format("woff2"), url("/assets/fonts/iconfont.ttf") format("truetype"), url("/assets/fonts/iconfont.svg#IconFont") format("svg");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Adani-Bold";
+  src: url("/assets/fonts/Adani-Bold.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Adani-Medium";
+  src: url("/assets/fonts/Adani-Medium.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Adani-Regular";
+  src: url("/assets/fonts/Adani-Regular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Adani-SemiBold";
+  src: url("/assets/fonts/Adani-SemiBold.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: AdaniSemiBold;
+  src: url("/fonts/AALP/Adani-SemiBold.woff");
+}
+@font-face {
+  font-family: AdaniRegular;
+  src: url("/fonts/AALP/Adani-Regular_1.woff");
+}
+@font-face {
+  font-family: AdaniMedium;
+  src: url("/fonts/AALP/Adani-Medium.woff");
+}
 .contact-section {
   background: #fff;
 }
 .contact-section .section-title {
-  font-size: 56px;
-  font-weight: 700;
+  font-family: AdaniRegular !important;
   color: #000;
+  text-align: left;
 }
 .contact-section .section-desc {
-  max-width: 850px;
-  margin: 0 auto;
   color: #444;
   font-size: 15px;
   line-height: 1.6;
+  text-align: left;
 }
 .contact-section .office-img {
   border-radius: 20px;
@@ -24,6 +95,11 @@
   padding-left: 16px;
   margin-bottom: 30px;
 }
+.contact-section .office-info .fw-bold {
+  color: #063293;
+  font-weight: 600;
+  font-size: 30px;
+}
 .contact-section .office-info .office-title {
   color: #00349e;
   font-size: 16px;
@@ -31,8 +107,9 @@
 }
 .contact-section .office-info .office-text {
   color: #444;
-  font-size: 14px;
+  font-size: 20px;
   line-height: 1.6;
+  font-weight: 500;
 }
 .contact-section .office-info a {
   color: #00349e;

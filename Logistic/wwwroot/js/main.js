@@ -89,10 +89,38 @@ pins.forEach(pin => {
 });
 
 // ✅ Tabs logic
+// ✅ Tabs logic + value switching
 const tabs = document.querySelectorAll(".tab-btn");
+const operationalValue = document.querySelector(".location-details .operational-value");
+const upcomingValue = document.querySelector(".location-details .upcoming-value");
+
 tabs.forEach(tab => {
     tab.addEventListener("click", () => {
+
+        // Activate tab
         tabs.forEach(t => t.classList.remove("active"));
         tab.classList.add("active");
+
+        // Update values based on tab
+        if (tab.dataset.tab === "operational") {
+            operationalValue.textContent = "6.8";   // Actual value
+            upcomingValue.textContent = "-";        // Hide upcoming
+        }
+        else if (tab.dataset.tab === "upcoming") {
+            operationalValue.textContent = "-";     // Hide operational
+            upcomingValue.textContent = "4.2";      // Example value (replace with real)
+        }
+    });
+});
+
+const buttons = document.querySelectorAll(".toggle-btn");
+const centerText = document.getElementById("centerText");
+
+buttons.forEach(btn => {
+    btn.addEventListener("click", () => {
+        buttons.forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+
+        centerText.textContent = btn.dataset.solution;
     });
 });

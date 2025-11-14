@@ -387,7 +387,7 @@ body {
 }
 .hero-banner .heroSwiper {
   width: 100%;
-  height: 75vh;
+  height: calc(100vh - 74px);
   min-height: 500px;
 }
 .hero-banner .heroSwiper .swiper-slide {
@@ -554,6 +554,115 @@ body {
     width: 20px;
     height: 28px;
   }
+}
+
+.our-solutions-section {
+  text-align: center;
+  background: #F8F8F8;
+}
+.our-solutions-section .section-title {
+  color: #00349e;
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+.our-solutions-section .section-desc {
+  max-width: 800px;
+  margin: auto;
+  color: #444;
+  font-size: 16px;
+  line-height: 1.6;
+}
+.our-solutions-section {
+  /* Toggle */
+}
+.our-solutions-section .solutions-toggle {
+  margin: 25px auto;
+  background: #f5f5f5;
+  padding: 4px;
+  border-radius: 25px;
+  width: fit-content;
+}
+.our-solutions-section .solutions-toggle .toggle-btn {
+  border: none;
+  background: transparent;
+  padding: 8px 22px;
+  border-radius: 25px;
+  font-weight: 600;
+  cursor: pointer;
+  color: #444;
+}
+.our-solutions-section .solutions-toggle .toggle-btn.active {
+  background: linear-gradient(90deg, #006cb6, #3c50a6);
+  color: #fff;
+}
+.our-solutions-section {
+  /* Diagram block */
+}
+.our-solutions-section .solutions-diagram {
+  margin-top: 50px;
+  position: relative;
+}
+.our-solutions-section .solutions-diagram .diagram-title {
+  font-size: 50px;
+  font-weight: 700;
+  color: rgba(0, 0, 0, 0.06);
+  position: absolute;
+  top: 18%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+.our-solutions-section .solutions-diagram .top-row {
+  display: flex;
+  gap: 3.5rem;
+  justify-content: space-between;
+  margin: auto;
+  margin-bottom: 50px;
+}
+.our-solutions-section .solutions-diagram .bottom-row {
+  display: flex;
+  gap: 3.5rem;
+  justify-content: center;
+  margin: auto;
+  margin-bottom: 50px;
+}
+.our-solutions-section .solutions-diagram .bubble {
+  padding: 30px 60px;
+  border-radius: 50px;
+  font-size: 16px;
+  font-weight: 500;
+  white-space: nowrap;
+  width: 340px;
+  z-index: 1;
+}
+.our-solutions-section .solutions-diagram .bubble.purple {
+  background: #f7f1fb;
+}
+.our-solutions-section .solutions-diagram .bubble.pink {
+  background: #fdeef2;
+}
+.our-solutions-section .solutions-diagram .bubble.blue {
+  background: #edf3ff;
+}
+.our-solutions-section .solutions-diagram .bubble.teal {
+  background: #eaf5f7;
+}
+.our-solutions-section .solutions-diagram {
+  /* Curved dashed connectors */
+}
+.our-solutions-section .solutions-diagram svg {
+  position: absolute;
+  width: 700px;
+  height: 150px;
+  top: 42%;
+  z-index: 0;
+}
+.our-solutions-section .solutions-diagram svg.curve-left {
+  left: 18%;
+}
+.our-solutions-section .solutions-diagram svg.curve-right {
+  right: 18%;
 }
 
 /*# sourceMappingURL=home.css.map */

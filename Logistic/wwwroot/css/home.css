@@ -157,52 +157,48 @@ body {
   color: #111;
   font-size: 20px;
   text-align: left;
+  max-width: 600px;
 }
-.incubation-section .icon-box {
-  width: 130px;
-  height: 130px;
+.incubation-section .circle-box {
+  width: 145px;
+  height: 145px;
   border-radius: 50%;
+  background: #fff;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 0 auto 10px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
 }
-.incubation-section .icon-box img {
-  width: 55px;
+.incubation-section .circle-box img {
+  width: 60px;
   height: auto;
+  z-index: 2;
 }
-.incubation-section .icon-purple {
-  background: #eee6f4;
+.incubation-section .circle-box {
+  /* Gradient border using pseudo element */
 }
-.incubation-section .icon-pink {
-  background: #f8e8eb;
-}
-.incubation-section .icon-blue {
-  background: #e3ecff;
-}
-.incubation-section .icon-green {
-  background: #e3f3f5;
-}
-.incubation-section .feature-text {
-  font-size: 16px;
-  font-weight: 500;
-  color: #111;
+.incubation-section .circle-box::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  padding: 5px; /* border thickness */
+  background: linear-gradient(180deg, #1264B1 0%, #723496 67.31%);
+  -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 5px), #000 calc(100% - 4px));
+  mask: radial-gradient(farthest-side, transparent calc(100% - 5px), #000 calc(100% - 4px));
+  z-index: 1;
 }
 .incubation-section .feature-number {
   font-size: 18px;
   font-weight: 700;
+  color: #111;
 }
-.incubation-section .text-purple {
-  color: #9534aa;
-}
-.incubation-section .text-pink {
-  color: #b4334b;
-}
-.incubation-section .text-blue {
-  color: #0052d6;
-}
-.incubation-section .text-green {
-  color: #007c83;
+.incubation-section .feature-text {
+  font-size: 15px;
+  font-weight: 500;
+  color: #444;
 }
 
 .about-section .about-title {
@@ -899,89 +895,289 @@ body {
   top: 10px;
 }
 
-.customer-type-section {
-  background: #f8f8f8;
-  padding: 2rem 0;
+/* ----------------------------------------
+   MOBILE RESPONSIVE – WAREHOUSE INFO SECTION
+-----------------------------------------*/
+@media (max-width: 992px) {
+  .warehouse-info-section {
+    padding: 2rem 0;
+  }
+  .warehouse-info-section .top-heading {
+    font-size: 20px;
+    line-height: 1.3;
+  }
+  .warehouse-info-section {
+    /* Stats responsive */
+  }
+  .warehouse-info-section .warehouse-stats {
+    flex-wrap: wrap;
+    gap: 1.5rem;
+  }
+  .warehouse-info-section .warehouse-stats .stat-block {
+    text-align: center;
+  }
+  .warehouse-info-section .warehouse-stats .stat-block .stat-value {
+    font-size: 22px;
+  }
+  .warehouse-info-section .warehouse-stats .stat-block .stat-label {
+    font-size: 12px;
+  }
+  .warehouse-info-section .warehouse-stats .divider {
+    display: none;
+  }
+  .warehouse-info-section {
+    /* Amenities Card */
+  }
+  .warehouse-info-section .amenities-card {
+    padding: 1.5rem;
+  }
+  .warehouse-info-section .amenities-card .amenities-title {
+    font-size: 16px;
+  }
+  .warehouse-info-section .amenities-card .amenitiesSwiper {
+    padding-top: 20px;
+  }
+  .warehouse-info-section .amenities-card .amenitiesSwiper .amenity-card img {
+    width: 100px;
+    height: 100px;
+  }
+  .warehouse-info-section .amenities-card .amenitiesSwiper .amenity-card p {
+    font-size: 12px;
+  }
+  .warehouse-info-section .amenities-card .amenitiesSwiper {
+    /* Swiper arrows */
+  }
+  .warehouse-info-section .amenities-card .amenitiesSwiper .custom-prev,
+  .warehouse-info-section .amenities-card .amenitiesSwiper .custom-next {
+    width: 28px;
+    height: 28px;
+  }
+  .warehouse-info-section .amenities-card .amenitiesSwiper .custom-prev::after,
+  .warehouse-info-section .amenities-card .amenitiesSwiper .custom-next::after {
+    font-size: 14px;
+  }
+  .warehouse-info-section .amenities-card .amenitiesSwiper .custom-prev {
+    right: 60px;
+  }
+  .warehouse-info-section .amenities-card .amenitiesSwiper .custom-next {
+    right: 20px;
+  }
 }
-.customer-type-section .customer-card {
+/* ----------------------------------------
+   SMALL MOBILE (Below 576px)
+-----------------------------------------*/
+@media (max-width: 576px) {
+  .warehouse-info-section {
+    padding: 1.5rem 0;
+  }
+  .warehouse-info-section .top-heading {
+    font-size: 18px;
+  }
+  .warehouse-info-section {
+    /* Stats */
+  }
+  .warehouse-info-section .warehouse-stats {
+    flex-direction: column;
+    text-align: center;
+  }
+  .warehouse-info-section .warehouse-stats .stat-block .stat-value {
+    font-size: 20px;
+  }
+  .warehouse-info-section {
+    /* Amenities Card */
+  }
+  .warehouse-info-section .amenities-card {
+    padding: 1.2rem;
+  }
+  .warehouse-info-section .amenities-card .amenities-title {
+    font-size: 15px;
+  }
+  .warehouse-info-section .amenities-card .amenitiesSwiper .amenity-card img {
+    width: 85px;
+    height: 85px;
+  }
+  .warehouse-info-section .amenities-card .amenitiesSwiper .amenity-card p {
+    font-size: 12px;
+  }
+  .warehouse-info-section .amenities-card .amenitiesSwiper {
+    /* Move arrows inside properly */
+  }
+  .warehouse-info-section .amenities-card .amenitiesSwiper .custom-prev {
+    right: 55px;
+    top: 5px;
+  }
+  .warehouse-info-section .amenities-card .amenitiesSwiper .custom-next {
+    right: 15px;
+    top: 5px;
+  }
+}
+.customer-type-section {
+  position: relative;
+  padding: 60px 0;
   background: #fff;
-  border-radius: 18px;
-  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.2509803922);
-  padding: 2rem;
 }
 .customer-type-section .customer-title {
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 600;
-  margin-bottom: 2rem;
-  color: #333;
 }
 .customer-type-section .customer-items {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 1rem;
-  margin: 2rem;
-}
-.customer-type-section .customer-items .customer-item {
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
+  align-items: center;
+  gap: 50px;
+  margin-top: 20px;
 }
-.customer-type-section .customer-items .customer-item p {
-  margin-top: 10px;
-  font-size: 15px;
-  color: #333;
+.customer-type-section .customer-item {
+  text-align: center;
+  font-size: 14px;
   line-height: 1.3;
-  font-weight: 400;
 }
-.customer-type-section .customer-items .icon-box {
+.customer-type-section .customer-item p {
+  margin-top: 8px;
+}
+.customer-type-section .icon-box {
   width: 50px;
   height: 50px;
   border-radius: 12px;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  margin: 0 auto;
 }
-.customer-type-section .customer-items .icon-box img {
-  width: 25px;
-  height: 25px;
+.customer-type-section {
+  /* Pastel backgrounds matching your design */
 }
 .customer-type-section .icon-blue {
-  background: #e1f0ff;
+  background: #d7f3ff;
 }
 .customer-type-section .icon-purple {
-  background: #f1e8ff;
+  background: #eee3ff;
 }
 .customer-type-section .icon-lightblue {
-  background: #e8f3ff;
+  background: #e3f0ff;
 }
 .customer-type-section .icon-pink {
-  background: #ffe7ea;
+  background: #ffe5ea;
 }
 .customer-type-section .icon-skyblue {
-  background: #e8f7ff;
+  background: #e0f5ff;
 }
+.customer-type-section .icon-box img {
+  width: 22px;
+  height: 22px;
+}
+.customer-type-section {
+  /* LEFT & RIGHT ILLUSTRATIONS */
+}
+.customer-type-section .side-graphic {
+  position: absolute;
+  bottom: 0;
+  width: 180px;
+  opacity: 0.9;
+}
+.customer-type-section .left-graphic {
+  left: 0;
+  transform: translateX(-30%);
+}
+.customer-type-section .right-graphic {
+  right: 0;
+  transform: translateX(30%);
+}
+
+/* MOBILE RESPONSIVE */
 @media (max-width: 768px) {
+  .customer-type-section {
+    padding: 40px 0;
+  }
   .customer-type-section .customer-items {
     flex-wrap: wrap;
-    justify-content: center;
-    gap: 1.5rem;
+    gap: 25px;
   }
-  .customer-type-section .customer-items .customer-item {
+  .customer-type-section .customer-item {
+    width: 45%;
+  }
+  .customer-type-section .icon-box {
+    width: 45px;
+    height: 45px;
+  }
+  .customer-type-section .icon-box img {
+    width: 20px;
+    height: 20px;
+  }
+  .customer-type-section {
+    /* Adjust the side graphics so they don’t overlap content */
+  }
+  .customer-type-section .side-graphic {
+    width: 120px;
+    opacity: 0.6;
+  }
+  .customer-type-section .left-graphic {
+    left: -20px;
+    bottom: -10px;
+    transform: none;
+  }
+  .customer-type-section .right-graphic {
+    right: -20px;
+    bottom: -10px;
+    transform: none;
+  }
+}
+/* Desktop — keep your current gap */
+.customer-type-section .customer-items {
+  gap: 10rem;
+}
+
+/* Mobile — reduce gap to 2rem */
+@media (max-width: 768px) {
+  .customer-type-section .customer-items {
+    gap: 2rem !important;
+    flex-wrap: wrap;
+  }
+  .customer-type-section .customer-item {
     width: 45%;
   }
 }
+/* Extra small screens */
 @media (max-width: 480px) {
   .customer-type-section .customer-items {
-    gap: 1.2rem;
+    gap: 1.5rem !important;
+    flex-direction: column;
   }
-  .customer-type-section .customer-items .customer-item {
+  .customer-type-section .customer-item {
     width: 100%;
   }
 }
-
+/* SMALLER MOBILE (≤ 480px) */
+@media (max-width: 480px) {
+  .customer-type-section .customer-items {
+    flex-direction: column;
+    gap: 20px;
+  }
+  .customer-type-section .customer-item {
+    width: 100%;
+  }
+  .customer-type-section .icon-box {
+    width: 42px;
+    height: 42px;
+  }
+  .customer-type-section .icon-box img {
+    width: 18px;
+    height: 18px;
+  }
+  .customer-type-section .side-graphic {
+    width: 90px;
+    opacity: 0.4;
+  }
+  .customer-type-section .left-graphic {
+    left: -10px;
+  }
+  .customer-type-section .right-graphic {
+    right: -10px;
+  }
+  .customer-type-section .customer-title {
+    font-size: 18px;
+  }
+}
 .media-gallery-section {
   background: #f8f8f8;
   padding: 4rem 0;
@@ -1028,10 +1224,11 @@ body {
   background: #eee;
   border-radius: 40px;
   padding: 6px;
-  width: fit-content;
+  width: 80%;
   margin: 0 auto 2rem auto;
   display: flex;
   gap: 20px;
+  justify-content: space-between;
 }
 .media-gallery-section .gallery-tabs .tab-btn-media {
   background: transparent;
@@ -1055,6 +1252,11 @@ body {
 }
 .media-gallery-section {
   /* Media Grid */
+}
+@media (max-width: 576px) {
+  .media-gallery-section .gallery-tabs {
+    width: fit-content !important;
+  }
 }
 .media-gallery-section .media-grid {
   display: grid;
@@ -1251,63 +1453,139 @@ body {
     margin-bottom: 30px;
   }
 }
-.vision-mission-section .vm-box {
-  position: relative;
-  height: 360px;
+.vision-commit-wrapper {
+  background: #efefef; /* light grey like screenshot */
+}
+.vision-commit-wrapper .vision-commit-box {
+  background: #f4f4f4;
+  padding: 1.8rem 1.5rem;
+  border: 1px solid #dcdcdc;
+  border-radius: 6px;
+}
+.vision-commit-wrapper {
+  /* LEFT SIDE */
+}
+.vision-commit-wrapper .left-side {
+  padding-right: 2rem;
+}
+.vision-commit-wrapper .left-side .title-line {
+  width: 30px;
+  height: 4px;
+  background: #008c73;
+  margin-bottom: 10px;
+}
+.vision-commit-wrapper .left-side .vision-title {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #222;
+}
+.vision-commit-wrapper .left-side .vision-text {
+  font-size: 14px;
+  color: #555;
+  line-height: 1.5;
+  max-width: 300px;
+}
+.vision-commit-wrapper {
+  /* RIGHT SIDE: Slider */
+}
+.vision-commit-wrapper .right-side {
+  padding-left: 0;
+}
+.vision-commit-wrapper .right-side .commitSwiper {
+  border-radius: 8px;
   overflow: hidden;
-  display: flex;
-  align-items: flex-end;
-  padding: 40px;
+  position: relative;
+}
+.vision-commit-wrapper .right-side .commitSwiper .slide-box {
+  position: relative;
+}
+.vision-commit-wrapper .right-side .commitSwiper .slide-box img {
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+}
+.vision-commit-wrapper .right-side .commitSwiper .slide-box .dark-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+}
+.vision-commit-wrapper .right-side .commitSwiper .slide-box .slide-content {
+  position: absolute;
+  top: 25px;
+  left: 25px;
   color: #fff;
 }
-.vision-mission-section {
-  /* Background image */
+.vision-commit-wrapper .right-side .commitSwiper .slide-box .slide-content .white-line {
+  background: #00ffc3; /* teal line */
+  width: 25px;
+  height: 3px;
+  margin-bottom: 10px;
 }
-.vision-mission-section .vm-img {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: 0;
+.vision-commit-wrapper .right-side .commitSwiper .slide-box .slide-content h3 {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 6px;
 }
-.vision-mission-section {
-  /* Dark overlay */
+.vision-commit-wrapper .right-side .commitSwiper .slide-box .slide-content p {
+  font-size: 14px;
+  max-width: 380px;
 }
-.vision-mission-section .vm-overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.35);
-  z-index: 1;
+.vision-commit-wrapper .right-side .commitSwiper {
+  /* ARROWS */
 }
-.vision-mission-section {
-  /* Text ON TOP of image */
+.vision-commit-wrapper .right-side .commitSwiper .commit-prev,
+.vision-commit-wrapper .right-side .commitSwiper .commit-next {
+  width: 38px;
+  height: 38px;
+  background: #fff;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
-.vision-mission-section .vm-content {
-  position: relative;
-  z-index: 2;
-  max-width: 60%;
-}
-.vision-mission-section .vm-title {
-  font-size: 28px;
-  font-weight: 700;
-  margin-bottom: 12px;
-}
-.vision-mission-section .vm-text {
+.vision-commit-wrapper .right-side .commitSwiper .commit-prev::after,
+.vision-commit-wrapper .right-side .commitSwiper .commit-next::after {
+  color: #333;
   font-size: 16px;
-  line-height: 1.6;
+}
+.vision-commit-wrapper .right-side .commitSwiper .commit-prev {
+  left: 25px;
+  bottom: 25px;
+  top: auto;
+}
+.vision-commit-wrapper .right-side .commitSwiper .commit-next {
+  left: 75px;
+  bottom: 25px;
+  top: auto;
+}
+.vision-commit-wrapper {
+  /* RESPONSIVE */
+}
+@media (max-width: 768px) {
+  .vision-commit-wrapper .left-side {
+    padding-right: 0;
+    text-align: center;
+  }
+  .vision-commit-wrapper .left-side .vision-text {
+    max-width: 100%;
+    margin: auto;
+  }
+  .vision-commit-wrapper .commitSwiper .slide-box img {
+    height: 220px;
+  }
+  .vision-commit-wrapper .commitSwiper .slide-content {
+    top: 15px;
+    left: 15px;
+  }
+  .vision-commit-wrapper .commit-prev,
+  .vision-commit-wrapper .commit-next {
+    width: 32px !important;
+    height: 32px !important;
+  }
 }
 
-/* Mobile */
-@media (max-width: 767px) {
-  .vision-mission-section .vm-box {
-    height: auto;
-    padding: 50px 20px;
-  }
-  .vision-mission-section .vm-content {
-    max-width: 100%;
-  }
-}
 .management-section .management-title {
   font-size: 26px;
   font-weight: 700;
@@ -1457,6 +1735,186 @@ body {
   }
   .space-wrapper .form-control {
     width: 100%;
+  }
+}
+.gap-10 {
+  gap: 6rem !important;
+}
+
+.connectivity-section .connect-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #00349E;
+}
+.connectivity-section .connect-subtitle {
+  font-size: 15px;
+  color: #666;
+  margin-top: 4px;
+}
+.connectivity-section {
+  /* LEFT LABELS */
+}
+.connectivity-section .left-label {
+  font-size: 15px;
+  font-weight: 500;
+  color: #333;
+  width: 150px;
+}
+.connectivity-section {
+  /* Each row */
+}
+.connectivity-section .connect-block {
+  display: flex;
+  align-items: center;
+  gap: 4rem;
+  margin-bottom: 1.8rem;
+}
+.connectivity-section {
+  /* Right grid (2 cards per row) */
+}
+.connectivity-section .right-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px 16px;
+  width: 100%;
+}
+.connectivity-section {
+  /* CARD */
+}
+.connectivity-section .connect-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  border-radius: 12px;
+  background: #fff;
+  border: 1px solid #e5e5e5;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.03);
+}
+.connectivity-section .connect-card h4 {
+  font-size: 17px;
+  font-weight: 700;
+  margin: 0;
+  color: #00349E;
+}
+.connectivity-section .connect-card p {
+  font-size: 14px;
+  margin: 0;
+  color: #333;
+}
+.connectivity-section .connect-card {
+  /* ⭐ Hover Effect */
+}
+.connectivity-section .connect-card:hover {
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.2509803922);
+}
+.connectivity-section {
+  /* ICON BOX */
+}
+.connectivity-section .icon-box {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.connectivity-section .icon-box img {
+  width: 20px;
+}
+.connectivity-section .icon-purple {
+  background: #f0e8ff;
+}
+.connectivity-section .icon-blue {
+  background: #e6f3ff;
+}
+.connectivity-section .icon-green {
+  background: #e8ffe8;
+}
+.connectivity-section {
+  /* MAP SECTION */
+}
+.connectivity-section .map-wrapper {
+  position: relative;
+  display: inline-block;
+}
+.connectivity-section .map-wrapper .map-img {
+  width: 100%;
+  height: 100%;
+}
+.connectivity-section .map-wrapper .pin {
+  width: 34px;
+  position: absolute;
+  top: 40%;
+  left: 45%;
+  transform: translate(-50%, -50%);
+}
+.connectivity-section .map-wrapper .state-name {
+  margin-top: 8px;
+  font-size: 15px;
+  font-weight: 600;
+}
+.connectivity-section {
+  /* Mobile Responsive */
+}
+@media (max-width: 768px) {
+  .connectivity-section .connect-block {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .connectivity-section .left-label {
+    width: auto;
+  }
+  .connectivity-section .right-grid {
+    grid-template-columns: 1fr;
+  }
+  .connectivity-section .map-wrapper .map-img {
+    width: 200px;
+  }
+}
+
+.connect-cta-section {
+  background: linear-gradient(90deg, #0077A7 0%, #2757A8 35%, #A137B6 70%, #C93333 100%);
+  padding: 2rem 0;
+  color: #fff;
+}
+.connect-cta-section .cta-text {
+  font-size: 18px;
+  margin: 0;
+  line-height: 1.4;
+  color: #fff;
+  font-weight: 400;
+}
+.connect-cta-section .cta-btn {
+  background: #fff;
+  color: #00349E;
+  padding: 10px 26px;
+  border-radius: 40px;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.connect-cta-section .cta-btn:hover {
+  background: #f1f1f1;
+}
+.connect-cta-section {
+  /* ----------- MOBILE ----------- */
+}
+@media (max-width: 768px) {
+  .connect-cta-section .container {
+    flex-direction: column;
+    text-align: center;
+    gap: 1.2rem;
+  }
+  .connect-cta-section .cta-text {
+    font-size: 16px;
+  }
+  .connect-cta-section .cta-btn {
+    padding: 10px 24px;
   }
 }
 

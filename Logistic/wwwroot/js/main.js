@@ -58,16 +58,15 @@ var heroSwiper = new Swiper(".heroSwiper", {
 const pins = document.querySelectorAll(".map-pin");
 const tooltip = document.getElementById("tooltip");
 
-// ✅ Tooltip logic
+// ✔ Tooltip on hover
 pins.forEach(pin => {
     pin.addEventListener("mouseenter", e => {
         tooltip.style.display = "block";
-        tooltip.textContent = pin.dataset.title;
+        tooltip.textContent = pin.dataset.name + ", " + pin.dataset.state;
 
         const rect = e.target.getBoundingClientRect();
         const parentRect = e.target.offsetParent.getBoundingClientRect();
 
-        // Position tooltip slightly above the pin
         tooltip.style.top = `${rect.top - parentRect.top - 25}px`;
         tooltip.style.left = `${rect.left - parentRect.left + rect.width / 2}px`;
     });
@@ -77,50 +76,54 @@ pins.forEach(pin => {
     });
 });
 
-// ✅ Click logic for active pin
+// ✔ Card elements
+const locImg = document.getElementById("locImg");
+const locName = document.getElementById("locName");
+const locState = document.getElementById("locState");
+const operationalVal = document.getElementById("operationalVal");
+const upcomingVal = document.getElementById("upcomingVal");
+const exploreLink = document.getElementById("exploreLink");
+
+// ✔ On pin click → highlight pin + update right panel
 pins.forEach(pin => {
     pin.addEventListener("click", () => {
+
+        // Highlight active pin
         pins.forEach(p => p.classList.remove("active"));
         pin.classList.add("active");
 
-        // (Optional) Update right info panel dynamically later
-        // updateRightPanel(pin.dataset.location);
-    });
-});
-
-// ✅ Tabs logic
-const tabs = document.querySelectorAll(".tab-btn");
-const operationalValue = document.querySelector(".location-details .operational-value");
-const upcomingValue = document.querySelector(".location-details .upcoming-value");
-
-tabs.forEach(tab => {
-    tab.addEventListener("click", () => {
-
-        // Activate tab
-        tabs.forEach(t => t.classList.remove("active"));
-        tab.classList.add("active");
-
-        // Update values based on tab
-        if (tab.dataset.tab === "operational") {
-            operationalValue.textContent = "6.8";   // Actual value
-            upcomingValue.textContent = "-";        // Hide upcoming
-        }
-        else if (tab.dataset.tab === "upcoming") {
-            operationalValue.textContent = "-";     // Hide operational
-            upcomingValue.textContent = "4.2";      // Example value (replace with real)
-        }
+        // Update right panel using HTML attributes
+        locImg.src = pin.dataset.img;
+        locName.textContent = pin.dataset.name;
+        locState.textContent = pin.dataset.state;
+        operationalVal.textContent = pin.dataset.operational;
+        upcomingVal.textContent = pin.dataset.upcoming;
+        exploreLink.href = pin.dataset.link;
     });
 });
 
 const buttons = document.querySelectorAll(".toggle-btn");
 const centerText = document.getElementById("centerText");
 
+const bubble1 = document.querySelector(".bubble1");
+const bubble2 = document.querySelector(".bubble2");
+const bubble3 = document.querySelector(".bubble3");
+const bubble4 = document.querySelector(".bubble4");
+
 buttons.forEach(btn => {
     btn.addEventListener("click", () => {
+
         buttons.forEach(b => b.classList.remove("active"));
         btn.classList.add("active");
 
+        // Center text
         centerText.textContent = btn.dataset.solution;
+
+        // Bubble text (pulled 100% from HTML attributes)
+        bubble1.textContent = btn.dataset.bubble1;
+        bubble2.textContent = btn.dataset.bubble2;
+        bubble3.textContent = btn.dataset.bubble3;
+        bubble4.textContent = btn.dataset.bubble4;
     });
 });
 
@@ -214,3 +217,12 @@ function setupSlider(grid) {
     });
 
     setupSlider(document.getElementById("operational"));
+
+
+var visionSwiper = new Swiper(".commitSwiper", {
+    loop: true,
+    navigation: {
+        nextEl: ".commit-next",
+        prevEl: ".commit-prev",
+    }
+});

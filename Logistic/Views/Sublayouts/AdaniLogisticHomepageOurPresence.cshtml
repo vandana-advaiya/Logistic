@@ -17,39 +17,41 @@
             <div class="col-lg-5">
                 <h3 class="section-title mb-3">Our Presence</h3>
                 <p class="section-text">
-                    We provide complete flexibility in our solutions. Whether you’re looking for cost-effectiveness or
-                    custom-made facilities, we have Ready-Space and Built-To-Suit solutions that cater to all your requirements.
+                    We provide complete flexibility in our solutions. Whether you’re looking for
+                    cost-effectiveness or custom-made facilities, we have solutions that cater to all your requirements.
                 </p>
-                <div class="presence-tabs d-flex mb-3">
-                    <button class="tab-btn active" data-tab="operational">Operational</button>
-                    <button class="tab-btn" data-tab="upcoming">Upcoming</button>
-                </div>
+
+                <!-- Location Card (auto-updates on pin click) -->
                 <div class="location-info">
-                    <img src="~/media/Taoru.svg" alt="Taoru" class="info-img rounded-3 mb-3 w-100">
+                    <img id="locImg" src="~/media/Taoru.svg" alt="" class="info-img rounded-3 mb-3 w-100">
+
                     <div class="container d-flex">
                         <div class="col-6">
-                            <h5 class="location-name mb-0">Taoru</h5>
-                            <small class="text-muted">Haryana</small>
+                            <h5 id="locName" class="location-name mb-0">Taoru</h5>
+                            <small id="locState" class="text-muted">Haryana</small>
                         </div>
-                       <div class="col-6">
-                        <a href="#" class="explore-link mt-3 d-inline-block">Explore more</a>
-                       </div>
-                    </div>
-                    <div class="location-details d-flex justify-content-between align-items-center p-3 mt-3 rounded-3">
-                        <div>
-                            <p class="text-muted mb-1 small">Operational</p>
-                            <h6 class="mb-0 fw-bold operational-value">6.8</h6> <!-- ADD class -->
-                            <small>Lac Sq. Ft.</small>
-                        </div>
-                        <div class="divider"></div>
-                        <div>
-                            <p class="text-muted mb-1 small">Upcoming</p>
-                            <h6 class="mb-0 fw-bold upcoming-value">-</h6> <!-- ADD class -->
+                        <div class="col-6 text-end">
+                            <a href="#" id="exploreLink" class="explore-link mt-3 d-inline-block">Explore more</a>
                         </div>
                     </div>
 
+                    <div class="location-details d-flex justify-content-between align-items-center p-3 mt-3 rounded-3">
+                        <div>
+                            <p class="text-muted mb-1 small">Operational</p>
+                            <h6 id="operationalVal" class="mb-0 fw-bold">6.8</h6>
+                            <small>Lac Sq. Ft.</small>
+                        </div>
+
+                        <div class="divider"></div>
+
+                        <div>
+                            <p class="text-muted mb-1 small">Upcoming</p>
+                            <h6 id="upcomingVal" class="mb-0 fw-bold">-</h6>
+                        </div>
+                    </div>
                 </div>
             </div>
+
         </div>
     </div>
 </section>

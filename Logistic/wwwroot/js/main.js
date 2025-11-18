@@ -89,7 +89,6 @@ pins.forEach(pin => {
 });
 
 // ✅ Tabs logic
-// ✅ Tabs logic + value switching
 const tabs = document.querySelectorAll(".tab-btn");
 const operationalValue = document.querySelector(".location-details .operational-value");
 const upcomingValue = document.querySelector(".location-details .upcoming-value");
@@ -124,3 +123,94 @@ buttons.forEach(btn => {
         centerText.textContent = btn.dataset.solution;
     });
 });
+
+var warehouseAmeities = new Swiper(".amenitiesSwiper", {
+    slidesPerView: 4,
+    spaceBetween: 30,
+    navigation: {
+        nextEl: ".custom-next",
+        prevEl: ".custom-prev",
+    },
+    breakpoints: {
+        320: { slidesPerView: 1.5, spaceBetween: 15 },
+        576: { slidesPerView: 2, spaceBetween: 20 },
+        768: { slidesPerView: 3, spaceBetween: 25 },
+        992: { slidesPerView: 5, spaceBetween: 30 },
+    }
+});
+
+    const mediaTabs = document.querySelectorAll(".tab-btn-media");
+    const mediaGrids = document.querySelectorAll(".media-grid");
+
+function setupSlider(grid) {
+    const slider = grid.querySelector(".media-slider");
+
+    // GET ITEMS SAFELY BEFORE CLEARING
+    const items = Array.from(slider.querySelectorAll(".media-item"));
+
+    slider.innerHTML = ""; // now safe to clear
+
+    const dotsContainer = document.querySelector(".pagination-dots");
+    dotsContainer.innerHTML = "";
+
+    const itemsPerSlide = 6;
+    const totalSlides = Math.ceil(items.length / itemsPerSlide);
+
+    dotsContainer.style.display = totalSlides <= 1 ? "none" : "flex";
+
+    const slides = [];
+
+    for (let i = 0; i < totalSlides; i++) {
+        const slide = document.createElement("div");
+        slide.classList.add("slide");
+        slide.style.display = i === 0 ? "grid" : "none";
+
+        items
+            .slice(i * itemsPerSlide, (i + 1) * itemsPerSlide)
+            .forEach(item => slide.appendChild(item));
+
+        slider.appendChild(slide);
+        slides.push(slide);
+    }
+
+    // Create dots
+    for (let i = 0; i < totalSlides; i++) {
+        const dot = document.createElement("span");
+        dot.classList.add("dot");
+        if (i === 0) dot.classList.add("active");
+        dot.dataset.index = i;
+        dotsContainer.appendChild(dot);
+    }
+
+    const dots = dotsContainer.querySelectorAll(".dot");
+
+    dots.forEach(dot => {
+        dot.addEventListener("click", () => {
+            const index = parseInt(dot.dataset.index);
+
+            slides.forEach(sl => sl.style.display = "none");
+            dots.forEach(d => d.classList.remove("active"));
+
+            slides[index].style.display = "grid";
+            dot.classList.add("active");
+        });
+    });
+}
+
+    mediaTabs.forEach(tab => {
+        tab.addEventListener("click", () => {
+            mediaTabs.forEach(t => t.classList.remove("active"));
+            tab.classList.add("active");
+
+            const target = tab.dataset.tab;
+
+            mediaGrids.forEach(grid => grid.classList.add("d-none"));
+
+            const activeGrid = document.getElementById(target);
+            activeGrid.classList.remove("d-none");
+
+            setupSlider(activeGrid);
+        });
+    });
+
+    setupSlider(document.getElementById("operational"));

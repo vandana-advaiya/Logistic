@@ -73,6 +73,9 @@
 .contact-section {
   background: #fff;
 }
+.contact-section .contact-us-image {
+  background: #F8F8F8;
+}
 .contact-section .section-title {
   font-family: AdaniRegular !important;
   color: #000;
@@ -91,7 +94,6 @@
   height: auto;
 }
 .contact-section .office-info {
-  background: #fff;
   padding-left: 16px;
   margin-bottom: 30px;
 }
@@ -101,15 +103,11 @@
   font-size: 30px;
 }
 .contact-section .office-info .office-title {
-  color: #00349e;
-  font-size: 16px;
+  color: black;
   font-weight: 600;
 }
 .contact-section .office-info .office-text {
   color: #444;
-  font-size: 20px;
-  line-height: 1.6;
-  font-weight: 500;
 }
 .contact-section .office-info a {
   color: #00349e;

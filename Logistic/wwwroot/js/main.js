@@ -55,51 +55,61 @@ var heroSwiper = new Swiper(".heroSwiper", {
     }
 });
 
-const pins = document.querySelectorAll(".map-pin");
-const tooltip = document.getElementById("tooltip");
+    const pins = document.querySelectorAll(".map-pin");
+    const tooltip = document.getElementById("tooltip");
 
-// ✔ Tooltip on hover
+// Tooltip hover
 pins.forEach(pin => {
-    pin.addEventListener("mouseenter", e => {
-        tooltip.style.display = "block";
-        tooltip.textContent = pin.dataset.name + ", " + pin.dataset.state;
+        pin.addEventListener("mouseenter", e => {
+            tooltip.style.display = "block";
+            tooltip.textContent = pin.dataset.name + ", " + pin.dataset.state;
 
-        const rect = e.target.getBoundingClientRect();
-        const parentRect = e.target.offsetParent.getBoundingClientRect();
+            const rect = e.target.getBoundingClientRect();
+            const parentRect = e.target.offsetParent.getBoundingClientRect();
 
-        tooltip.style.top = `${rect.top - parentRect.top - 25}px`;
-        tooltip.style.left = `${rect.left - parentRect.left + rect.width / 2}px`;
-    });
+            tooltip.style.top = `${rect.top - parentRect.top - 25}px`;
+            tooltip.style.left = `${rect.left - parentRect.left + rect.width / 2}px`;
+        });
 
     pin.addEventListener("mouseleave", () => {
         tooltip.style.display = "none";
     });
 });
 
-// ✔ Card elements
-const locImg = document.getElementById("locImg");
-const locName = document.getElementById("locName");
-const locState = document.getElementById("locState");
-const operationalVal = document.getElementById("operationalVal");
-const upcomingVal = document.getElementById("upcomingVal");
-const exploreLink = document.getElementById("exploreLink");
+    // Card elements
+    const locImg = document.getElementById("locImg");
+    const locName = document.getElementById("locName");
+    const locState = document.getElementById("locState");
+    const operationalVal = document.getElementById("operationalVal");
+    const upcomingVal = document.getElementById("upcomingVal");
+    const exploreLink = document.getElementById("exploreLink");
 
-// ✔ On pin click → highlight pin + update right panel
-pins.forEach(pin => {
-    pin.addEventListener("click", () => {
-
-        // Highlight active pin
-        pins.forEach(p => p.classList.remove("active"));
-        pin.classList.add("active");
-
-        // Update right panel using HTML attributes
+    // Function to update card
+    function updateCard(pin) {
         locImg.src = pin.dataset.img;
-        locName.textContent = pin.dataset.name;
-        locState.textContent = pin.dataset.state;
-        operationalVal.textContent = pin.dataset.operational;
-        upcomingVal.textContent = pin.dataset.upcoming;
-        exploreLink.href = pin.dataset.link;
-    });
+    locName.textContent = pin.dataset.name;
+    locState.textContent = pin.dataset.state;
+    operationalVal.textContent = pin.dataset.operational;
+    upcomingVal.textContent = pin.dataset.upcoming;
+    exploreLink.href = pin.dataset.link;
+}
+
+// Auto-init on page load
+document.addEventListener("DOMContentLoaded", () => {
+    const activePin = document.querySelector(".map-pin.active") || pins[0];
+    if (activePin) {
+        activePin.classList.add("active");
+    updateCard(activePin);
+    }
+});
+
+// Click update
+pins.forEach(pin => {
+        pin.addEventListener("click", () => {
+            pins.forEach(p => p.classList.remove("active"));
+            pin.classList.add("active");
+            updateCard(pin);
+        });
 });
 
 const buttons = document.querySelectorAll(".toggle-btn");
@@ -110,20 +120,27 @@ const bubble2 = document.querySelector(".bubble2");
 const bubble3 = document.querySelector(".bubble3");
 const bubble4 = document.querySelector(".bubble4");
 
+// 🔥 Function to update diagram content
+function updateBubbles(btn) {
+    centerText.textContent = btn.dataset.solution;
+    bubble1.textContent = btn.dataset.bubble1;
+    bubble2.textContent = btn.dataset.bubble2;
+    bubble3.textContent = btn.dataset.bubble3;
+    bubble4.textContent = btn.dataset.bubble4;
+}
+
+// 🔥 Initialize on page load from first active button
+document.addEventListener("DOMContentLoaded", () => {
+    const activeBtn = document.querySelector(".toggle-btn.active") || buttons[0];
+    updateBubbles(activeBtn);
+});
+
+// 🔥 Handle click
 buttons.forEach(btn => {
     btn.addEventListener("click", () => {
-
         buttons.forEach(b => b.classList.remove("active"));
         btn.classList.add("active");
-
-        // Center text
-        centerText.textContent = btn.dataset.solution;
-
-        // Bubble text (pulled 100% from HTML attributes)
-        bubble1.textContent = btn.dataset.bubble1;
-        bubble2.textContent = btn.dataset.bubble2;
-        bubble3.textContent = btn.dataset.bubble3;
-        bubble4.textContent = btn.dataset.bubble4;
+        updateBubbles(btn);
     });
 });
 

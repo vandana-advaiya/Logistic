@@ -1,8 +1,12 @@
 ﻿<section class="our-presence-section py-5">
     <div class="container">
         <div class="row align-items-center g-5">
+
+            <!-- MAP SECTION -->
             <div class="col-lg-7 position-relative text-center">
                 <img src="~/media/India-map.png" alt="India Map" class="img-fluid map-img">
+
+                <!-- MAP PINS (100% Dynamic Data From Attributes) -->
                 <button class="map-pin"
                         style="top: 28%; left: 32%;"
                         data-name="Taoru"
@@ -12,6 +16,7 @@
                         data-upcoming="-"
                         data-link="https://goo.gl/maps/ktBamYUQHozQnhyo9?g_st=au">
                 </button>
+
                 <button class="map-pin"
                         style="top: 36%; left: 36%;"
                         data-name="Palwal"
@@ -21,6 +26,7 @@
                         data-upcoming="5.96"
                         data-link="https://maps.app.goo.gl/mEGBXpNP9ryxk4eL6?g_st=at">
                 </button>
+
                 <button class="map-pin"
                         style="top: 50%; left: 40%;"
                         data-name="Indore"
@@ -91,8 +97,12 @@
                         data-link="https://www.google.com/maps/place/23%C2%B002'58.5%22N+72%C2%B015'01.1%22E">
                 </button>
 
+                <!-- Tooltip -->
                 <div id="tooltip" class="map-tooltip"></div>
             </div>
+
+
+            <!-- RIGHT PANEL -->
             <div class="col-lg-5">
                 <h3 class="section-title mb-3">Our Presence</h3>
                 <p class="section-text">
@@ -100,32 +110,33 @@
                     cost-effectiveness or custom-made facilities, we have solutions that cater to all your requirements.
                 </p>
 
-                <!-- Location Card (auto-updates on pin click) -->
+                <!-- Auto-updated card -->
                 <div class="location-info">
-                    <img id="locImg" src="~/media/Taoru.svg" alt="" class="info-img rounded-3 mb-3 w-100">
+
+                    <img id="locImg" src="" alt="" class="info-img rounded-3 mb-3 w-100">
 
                     <div class="container d-flex">
                         <div class="col-6">
-                            <h5 id="locName" class="location-name mb-0">Taoru</h5>
-                            <small id="locState" class="text-muted">Haryana</small>
+                            <h6 id="locName" class="location-name mb-0"></h6>
+                            <small id="locState" class="text-muted"></small>
                         </div>
                         <div class="col-6 text-end">
                             <a href="#" id="exploreLink" class="explore-link mt-3 d-inline-block">Explore more</a>
                         </div>
                     </div>
 
-                    <div class="location-details d-flex justify-content-between align-items-center p-3 mt-3 rounded-3">
+                    <div class="location-details d-flex justify-content-between align-items-start p-3 mt-3">
                         <div>
-                            <p class="text-muted mb-1 small">Operational</p>
-                            <h6 id="operationalVal" class="mb-0 fw-bold">6.8</h6>
+                            <p class="mb-1 small">Operational</p>
+                            <h6 id="operationalVal" class="mb-0 fw-bold"></h6>
                             <small>Lac Sq. Ft.</small>
                         </div>
 
                         <div class="divider"></div>
 
                         <div>
-                            <p class="text-muted mb-1 small">Upcoming</p>
-                            <h6 id="upcomingVal" class="mb-0 fw-bold">-</h6>
+                            <p class="mb-1 small">Upcoming</p>
+                            <h6 id="upcomingVal" class="mb-0 fw-bold"></h6>
                         </div>
                     </div>
                 </div>

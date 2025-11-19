@@ -26,9 +26,11 @@
     }
 
     .section-title {
-        font-family: AdaniRegular !important;
+        font-family: AdaniSemiBold;
         color: #000;
         text-align: left;
+        font-size: 32px;
+        font-weight: 700
     }
 
     .section-desc {
@@ -48,6 +50,7 @@
     .office-info {
         padding-left: 16px;
         margin-bottom: 30px;
+        font-family: AdaniSemiBold;
 
         .fw-bold {
             color: #063293;
@@ -76,6 +79,10 @@
         i {
             color: #666;
             width: 16px;
+        }
+
+        p {
+            font-family: AdaniRegular !important;
         }
     }
 

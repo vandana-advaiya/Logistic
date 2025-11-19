@@ -42,14 +42,31 @@
 
         <div class="media-grid d-none" id="video">
             <div class="media-slider">
-           <div class="media-item"><img src="/media/MediaGallery.svg" alt=""></div>
-           <div class="media-item"><img src="/media/MediaGallery.svg" alt=""></div>
-           <div class="media-item"><img src="/media/MediaGallery.svg" alt=""></div>
-           <div class="media-item"><img src="/media/MediaGallery.svg" alt=""></div>
-           <div class="media-item"><img src="/media/MediaGallery.svg" alt=""></div>
-            <div class="media-item"><img src="/media/MediaGallery.svg" alt=""></div>
-           <div class="media-item"><img src="/media/MediaGallery.svg" alt=""></div>
-          <div class="media-item"><img src="/media/MediaGallery.svg" alt=""></div>
+
+                <div class="media-item" data-type="video">
+                    <video src="https://www.w3schools.com/html/mov_bbb.mp4" muted></video>
+                </div>
+
+                <div class="media-item" data-type="video">
+                    <video src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" muted></video>
+                </div>
+
+                <div class="media-item" data-type="video">
+                    <video src="https://media.w3.org/2010/05/sintel/trailer.mp4" muted></video>
+                </div>
+
+                <div class="media-item" data-type="video">
+                    <video src="https://media.w3.org/2010/05/bunny/trailer.mp4" muted></video>
+                </div>
+
+                <div class="media-item" data-type="video">
+                    <video src="https://media.w3.org/2010/05/video/movie_300.mp4" muted></video>
+                </div>
+
+                <div class="media-item" data-type="video">
+                    <video src="https://storage.googleapis.com/media-session/elephants-dream/the-wires.mp4" muted></video>
+                </div>
+
             </div>
         </div>
 
@@ -75,6 +92,23 @@
 
     </div>
 </section>
+
+<!-- POPUP MODAL -->
+<div id="mediaModal" class="media-modal d-none">
+    <div class="media-overlay"></div>
+    <div class="media-popup">
+        <button class="close-modal">&times;</button>
+
+        <!-- Swiper -->
+        <div class="swiper popupSwiper">
+            <div class="swiper-wrapper" id="popupSlides"></div>
+
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-pagination"></div>
+        </div>
+    </div>
+</div>
 
 <section class="connectivity-section py-5">
     <div class="container">

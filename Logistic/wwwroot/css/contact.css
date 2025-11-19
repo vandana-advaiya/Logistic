@@ -58,7 +58,18 @@
   font-style: normal;
   font-display: swap;
 }
-
+@font-face {
+  font-family: AdaniSemiBold;
+  src: url("/fonts/AALP/Adani-SemiBold.woff");
+}
+@font-face {
+  font-family: AdaniRegular;
+  src: url("/fonts/AALP/Adani-Regular_1.woff");
+}
+@font-face {
+  font-family: AdaniMedium;
+  src: url("/fonts/AALP/Adani-Medium.woff");
+}
 .contact-section {
   background: #fff;
 }
@@ -66,9 +77,11 @@
   background: #F8F8F8;
 }
 .contact-section .section-title {
-  font-family: AdaniRegular !important;
+  font-family: AdaniSemiBold;
   color: #000;
   text-align: left;
+  font-size: 32px;
+  font-weight: 700;
 }
 .contact-section .section-desc {
   color: #444;
@@ -85,6 +98,7 @@
 .contact-section .office-info {
   padding-left: 16px;
   margin-bottom: 30px;
+  font-family: AdaniSemiBold;
 }
 .contact-section .office-info .fw-bold {
   color: #063293;
@@ -108,6 +122,9 @@
 .contact-section .office-info i {
   color: #666;
   width: 16px;
+}
+.contact-section .office-info p {
+  font-family: AdaniRegular !important;
 }
 @media (max-width: 768px) {
   .contact-section .section-desc {

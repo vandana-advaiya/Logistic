@@ -127,6 +127,9 @@ buttons.forEach(btn => {
     });
 });
 
+/* ---------------------------------------------------
+   YOUR EXISTING SWIPER (AMENITIES)
+------------------------------------------------------*/
 var warehouseAmeities = new Swiper(".amenitiesSwiper", {
     slidesPerView: 4,
     spaceBetween: 30,
@@ -142,18 +145,20 @@ var warehouseAmeities = new Swiper(".amenitiesSwiper", {
     }
 });
 
-    const mediaTabs = document.querySelectorAll(".tab-btn-media");
-    const mediaGrids = document.querySelectorAll(".media-grid");
+
+/* ---------------------------------------------------
+   MEDIA TAB SWITCHING + SLIDER CREATION
+------------------------------------------------------*/
+const mediaTabs = document.querySelectorAll(".tab-btn-media");
+const mediaGrids = document.querySelectorAll(".media-grid");
+const dotsContainer = document.querySelector(".pagination-dots");
+
 
 function setupSlider(grid) {
     const slider = grid.querySelector(".media-slider");
 
-    // GET ITEMS SAFELY BEFORE CLEARING
     const items = Array.from(slider.querySelectorAll(".media-item"));
-
-    slider.innerHTML = ""; // now safe to clear
-
-    const dotsContainer = document.querySelector(".pagination-dots");
+    slider.innerHTML = "";
     dotsContainer.innerHTML = "";
 
     const itemsPerSlide = 6;
@@ -168,15 +173,13 @@ function setupSlider(grid) {
         slide.classList.add("slide");
         slide.style.display = i === 0 ? "grid" : "none";
 
-        items
-            .slice(i * itemsPerSlide, (i + 1) * itemsPerSlide)
+        items.slice(i * itemsPerSlide, (i + 1) * itemsPerSlide)
             .forEach(item => slide.appendChild(item));
 
         slider.appendChild(slide);
         slides.push(slide);
     }
 
-    // Create dots
     for (let i = 0; i < totalSlides; i++) {
         const dot = document.createElement("span");
         dot.classList.add("dot");
@@ -196,28 +199,162 @@ function setupSlider(grid) {
 
             slides[index].style.display = "grid";
             dot.classList.add("active");
+
+            currentSlide = index; // syncing for swipe
+        });
+    });
+
+    /* ------------------------------
+       DRAG / SWIPE SLIDING
+    --------------------------------*/
+    let currentSlide = 0;
+
+    slider.addEventListener("touchstart", startSwipe);
+    slider.addEventListener("mousedown", startSwipe);
+
+    function startSwipe(e) {
+        let startX = e.touches ? e.touches[0].clientX : e.clientX;
+
+        function move(e2) {
+            let moveX = e2.touches ? e2.touches[0].clientX : e2.clientX;
+
+            if (moveX - startX < -50 && currentSlide < slides.length - 1) {
+                dots[currentSlide + 1].click();
+                currentSlide++;
+                cleanup();
+            }
+            if (moveX - startX > 50 && currentSlide > 0) {
+                dots[currentSlide - 1].click();
+                currentSlide--;
+                cleanup();
+            }
+        }
+
+        function cleanup() {
+            slider.removeEventListener("touchmove", move);
+            slider.removeEventListener("mousemove", move);
+        }
+
+        slider.addEventListener("touchmove", move);
+        slider.addEventListener("mousemove", move);
+    }
+
+    // Enable popup clicking
+    enablePopup(grid);
+}
+
+
+/* ---------------------------------------------------
+   TAB CLICK HANDLER
+------------------------------------------------------*/
+mediaTabs.forEach(tab => {
+    tab.addEventListener("click", () => {
+        mediaTabs.forEach(t => t.classList.remove("active"));
+        tab.classList.add("active");
+
+        const target = tab.dataset.tab;
+
+        mediaGrids.forEach(grid => grid.classList.add("d-none"));
+
+        const activeGrid = document.getElementById(target);
+        activeGrid.classList.remove("d-none");
+
+        setupSlider(activeGrid);
+    });
+});
+
+
+/* ---------------------------------------------------
+   FIRST TAB INITIALIZATION
+------------------------------------------------------*/
+const firstGrid = document.getElementById("operational");
+setupSlider(firstGrid);
+
+
+/* ---------------------------------------------------
+   POPUP MODAL + POPUP SWIPER
+------------------------------------------------------*/
+const modal = document.getElementById("mediaModal");
+const popupSlides = document.getElementById("popupSlides");
+const closeModal = document.querySelector(".close-modal");
+const overlay = document.querySelector(".media-overlay");
+
+/* FIX: CLOSE MODAL */
+closeModal.addEventListener("click", (e) => {
+    e.stopPropagation();
+    modal.classList.add("d-none");
+});
+
+overlay.addEventListener("click", () => {
+    modal.classList.add("d-none");
+});
+
+
+/* ENABLE POPUP CLICK */
+function enablePopup(grid) {
+    const items = grid.querySelectorAll(".media-item");
+
+    items.forEach((item, index) => {
+        item.addEventListener("click", () => {
+            openPopup(grid, index);
         });
     });
 }
 
-    mediaTabs.forEach(tab => {
-        tab.addEventListener("click", () => {
-            mediaTabs.forEach(t => t.classList.remove("active"));
-            tab.classList.add("active");
 
-            const target = tab.dataset.tab;
+/* OPEN POPUP + AUTOSLIDE SWIPER */
+function openPopup(grid, startIndex) {
+    popupSlides.innerHTML = "";
 
-            mediaGrids.forEach(grid => grid.classList.add("d-none"));
+    const mediaItems = grid.querySelectorAll(".media-item");
+    let containsVideo = false; // <- NEW
 
-            const activeGrid = document.getElementById(target);
-            activeGrid.classList.remove("d-none");
+    mediaItems.forEach(item => {
+        const type = item.dataset.type || "image";
+        const src = item.querySelector("img, video").getAttribute("src");
 
-            setupSlider(activeGrid);
-        });
+        const slide = document.createElement("div");
+        slide.classList.add("swiper-slide");
+
+        if (type === "video") {
+            containsVideo = true; // <- NEW
+            slide.innerHTML = `<video src="${src}" controls></video>`;
+        } else {
+            slide.innerHTML = `<img src="${src}" />`;
+        }
+
+        popupSlides.appendChild(slide);
     });
 
-    setupSlider(document.getElementById("operational"));
+    modal.classList.remove("d-none");
 
+    /* -------------------------------------
+       AUTO SLIDE LOGIC BASED ON CONTENT
+       -------------------------------------*/
+
+    let swiperOptions = {
+        initialSlide: startIndex,
+        slidesPerView: 1,
+        navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+        },
+        pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
+        }
+    };
+
+    // Only enable autoplay if NO video exists
+    if (!containsVideo) {
+        swiperOptions.autoplay = {
+            delay: 2000,
+            disableOnInteraction: false
+        };
+    }
+
+    new Swiper(".popupSwiper", swiperOptions);
+}
 
 var visionSwiper = new Swiper(".commitSwiper", {
     loop: true,

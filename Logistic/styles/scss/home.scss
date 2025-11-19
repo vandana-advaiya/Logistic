@@ -1,12 +1,27 @@
 ﻿@use './partials/variable.scss' as *;
 @use './partials/_mixins.scss' as *;
-@use './partials/_fonts.scss' as *;
 @use 'sass:color';
+
+@font-face {
+    font-family: 'AdaniSemiBold';
+    src: url('/assets/fonts/Adani-SemiBold.woff2') format('woff2'), url('/assets/fonts/Adani-SemiBold.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'AdaniRegular';
+    src: url('/assets/fonts/Adani-Regular_1.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'AdaniMedium';
+    src: url('/assets/fonts/Adani-Medium.woff') format('woff');
+}
 
 body {
     background-color: #f4f4f4;
-    font-family: Arial, sans-serif;
+    font-family: AdaniRegular !important;
 }
+
 .main-header {
     .navbar {
         padding: 16px 0;
@@ -120,12 +135,14 @@ body {
         font-size: 32px;
         font-weight: 700;
         text-align: left;
+        font-family: AdaniSemiBold;
     }
 
     .section-subtitle {
         color: #111;
         font-size: 20px;
         text-align: left;
+        font-family: AdaniMedium;
         max-width: 600px;
     }
 
@@ -178,6 +195,7 @@ body {
         font-size: 28px;
         font-weight: 700;
         color: #00349e;
+        font-family: AdaniSemiBold;
     }
 
     .about-text {
@@ -309,6 +327,7 @@ body {
         font-size: 24px;
         font-weight: 700;
         color: #00349e;
+        font-family: AdaniSemiBold; 
     }
 
     .swiper {
@@ -415,16 +434,17 @@ body {
                     font-size: 2.5rem;
                     font-weight: 700;
                     color: #fff;
+                    font-family: AdaniSemiBold;
                 }
 
                 .banner-subtitle {
                     font-size: 1.1rem;
                     color: #e0e0e0;
+                    font-family: AdaniMedium;
                 }
             }
         }
     }
-
     /* Custom Pagination Dots */
     .swiper-pagination-bullet {
         width: 10px;
@@ -514,6 +534,7 @@ body {
         color: #00349e;
         font-size: 28px;
         font-weight: 700;
+        font-family: AdaniSemiBold;
     }
 
     .section-text {
@@ -587,12 +608,13 @@ body {
 .our-solutions-section {
     text-align: center;
     background: #F8F8F8;
-    
+
     .section-title {
         color: #00349e;
         font-size: 28px;
         font-weight: 700;
         margin-bottom: 10px;
+        font-family: AdaniSemiBold;
     }
 
     .section-desc {

@@ -2,22 +2,6 @@
 @use './partials/_mixins.scss' as *;
 @use './partials/_fonts.scss' as *;
 
-
-@font-face {
-    font-family: AdaniSemiBold;
-    src: url("/fonts/AALP/Adani-SemiBold.woff");
-}
-
-@font-face {
-    font-family: AdaniRegular;
-    src: url("/fonts/AALP/Adani-Regular_1.woff");
-}
-
-@font-face {
-    font-family: AdaniMedium;
-    src: url("/fonts/AALP/Adani-Medium.woff");
-}
-
 .contact-section {
     background: #fff;
 

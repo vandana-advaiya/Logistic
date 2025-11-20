@@ -36,6 +36,12 @@ namespace Logistic.Controllers
             return View();
         }
 
+        [Route("managing-director-message")]
+        public IActionResult ManagingDirector()
+        {
+            return View();
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

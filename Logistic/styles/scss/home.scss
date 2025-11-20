@@ -58,6 +58,83 @@ body {
             }
         }
     }
+    /* ------------------ DROPDOWN (DESKTOP + MOBILE) ------------------ */
+    /* Chevron animation */
+    .dropdown-icon {
+        transition: 0.3s ease;
+    }
+    /* Rotate icon when dropdown is open (mobile click) */
+    .show .dropdown-icon {
+        transform: rotate(180deg);
+    }
+    /* Fade menu effect */
+    .dropdown-menu {
+        border-radius: 6px;
+        padding: 10px 0;
+        border: 1px solid #eee;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(10px);
+        transition: 0.25s ease;
+    }
+    /* Desktop hover dropdown */
+    @media (min-width: 992px) {
+        .warehouse-dropdown:hover > .dropdown-menu {
+            display: block;
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        /* Rotate chevron on hover */
+        .warehouse-dropdown:hover .dropdown-icon {
+            transform: rotate(180deg);
+        }
+
+        .warehouse-dropdown .dropdown-toggle::after {
+            display: none !important;
+        }
+    }
+    /* Mobile – dropdown works on click (Bootstrap default) */
+    @media (max-width: 991px) {
+        .dropdown-menu {
+            opacity: 1 !important;
+            visibility: visible !important;
+            transform: none !important;
+        }
+
+        .navbar-nav .dropdown-menu {
+            padding-left: 15px;
+        }
+
+        .warehouse-dropdown .dropdown-toggle::after {
+            display: none !important;
+        }
+    }
+    /* Dropdown items */
+    .dropdown-item {
+        padding: 8px 20px;
+        font-size: 15px;
+        color: #333 !important;
+
+        &:hover {
+            background: #f5f5f5;
+        }
+    }
+    /* SVG dropdown arrow */
+    .dropdown-arrow {
+        transition: 0.3s ease;
+        stroke: #000;
+    }
+    /* Rotate on open */
+    .show .dropdown-arrow {
+        transform: rotate(180deg);
+    }
+    /* Desktop hover rotation */
+    @media (min-width: 992px) {
+        .warehouse-dropdown:hover .dropdown-arrow {
+            transform: rotate(180deg);
+        }
+    }
 }
 
 .main-footer {
@@ -2233,7 +2310,7 @@ body {
                 background: #f1f1f1;
             }
         }
-        /* ----------- MOBILE ----------- */
+
         @media (max-width: 768px) {
             .container {
                 flex-direction: column;
@@ -2250,3 +2327,96 @@ body {
             }
         }
     }
+
+
+.md-message-section {
+    .breadcrumb-nav {
+        font-size: 14px;
+
+        a {
+            color: #666;
+            text-decoration: none;
+
+            &:hover {
+                color: #000;
+            }
+        }
+
+        span {
+            margin: 0 5px;
+            color: #999;
+        }
+
+        .current {
+            font-weight: 500;
+            color: #000;
+        }
+    }
+
+    .md-img {
+        width: 100%;
+        max-width: 230px;
+        border-radius: 4px;
+        object-fit: cover;
+    }
+
+    .md-name {
+        font-size: 26px;
+        font-weight: 600;
+    }
+
+    .md-designation {
+        color: #777;
+        margin-top: -5px;
+        margin-bottom: 15px;
+    }
+
+    .md-social a {
+        font-size: 22px;
+        color: #000;
+        margin-right: 12px;
+        transition: 0.3s;
+
+        &:hover {
+            color: #007EA3;
+        }
+    }
+
+    .md-title {
+        font-size: 22px;
+        font-weight: 600;
+        margin-bottom: 15px;
+    }
+
+    p {
+        color: #444;
+        margin-bottom: 16px;
+        line-height: 1.6;
+    }
+
+    .btn-teal {
+        background: #007EA3;
+        color: #fff;
+        padding: 10px 20px;
+        border-radius: 4px;
+        font-size: 15px;
+        transition: 0.3s;
+
+        &:hover {
+            background: #005f78;
+            color: #fff;
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .md-message-section {
+        .md-name {
+            font-size: 22px;
+        }
+
+        .md-title {
+            font-size: 20px;
+        }
+    }
+}

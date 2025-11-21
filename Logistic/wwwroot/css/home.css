@@ -2186,5 +2186,114 @@ body {
     font-size: 20px;
   }
 }
+.sustain-banner {
+  position: relative;
+  width: 100%;
+  height: 70vh;
+  background: url("/media/sustainability-banner.jpg") center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  color: #fff;
+}
+.sustain-banner .banner-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+}
+.sustain-banner .breadcrumb-custom {
+  position: relative;
+  z-index: 2;
+  margin-bottom: 20px;
+}
+.sustain-banner .breadcrumb-custom a {
+  color: #fff;
+  font-size: 18px;
+  text-decoration: none;
+  opacity: 0.9;
+}
+.sustain-banner .breadcrumb-custom a:hover {
+  opacity: 1;
+}
+.sustain-banner .banner-text {
+  position: relative;
+  z-index: 2;
+}
+.sustain-banner .banner-text h1 {
+  font-size: 58px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+.sustain-banner .banner-text p {
+  font-size: 22px;
+  max-width: 650px;
+}
+
+@media (max-width: 768px) {
+  .sustain-banner {
+    height: 55vh;
+  }
+  .sustain-banner .banner-text h1 {
+    font-size: 40px;
+  }
+  .sustain-banner .banner-text p {
+    font-size: 18px;
+  }
+}
+.growth-section {
+  background: #f0f0f0;
+  padding: 60px 0;
+  text-align: left;
+}
+.growth-section .growth-title {
+  font-size: 24px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+.growth-section .growth-title .title-bar {
+  width: 4px;
+  height: 24px;
+  background: #009688;
+  display: inline-block;
+}
+.growth-section .growth-short {
+  font-size: 16px;
+  color: #555;
+  max-width: 900px;
+}
+.growth-section .growth-more {
+  font-size: 16px;
+  color: #555;
+  max-width: 900px;
+  margin-top: 20px;
+  display: none;
+}
+.growth-section .growth-more.open {
+  display: block;
+}
+.growth-section .toggle-wrapper {
+  text-align: center;
+  margin-top: 30px;
+}
+.growth-section .toggle-btn {
+  background: #fff;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 30px;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.growth-section .toggle-btn .icon {
+  margin-left: 5px;
+  transition: transform 0.3s ease;
+  display: inline-block;
+}
+.growth-section .icon.rotate {
+  transform: rotate(180deg);
+}
 
 /*# sourceMappingURL=home.css.map */

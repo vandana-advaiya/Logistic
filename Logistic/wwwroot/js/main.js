@@ -1,4 +1,21 @@
-﻿const navLinks = document.querySelectorAll('.nav-link');
+﻿document.addEventListener("DOMContentLoaded", () => {
+
+    const ReadMoreButton = document.getElementById("ReadMoreButton");
+    const moreContent = document.getElementById("moreContent");
+
+    ReadMoreButton.addEventListener("click", () => {
+
+        const isOpen = moreContent.classList.toggle("open");
+
+        if (isOpen) {
+            ReadMoreButton.innerHTML = `Read less <span class="icon rotate">&#x25B2;</span>`;
+        } else {
+            ReadMoreButton.innerHTML = `Read more <span class="icon">&#x25BC;</span>`;
+        }
+    });
+});
+
+const navLinks = document.querySelectorAll('.nav-link');
 
 navLinks.forEach(link => {
     link.addEventListener('click', () => {
@@ -112,36 +129,38 @@ pins.forEach(pin => {
         });
 });
 
-const buttons = document.querySelectorAll(".toggle-btn");
-const centerText = document.getElementById("centerText");
-
-const bubble1 = document.querySelector(".bubble1");
-const bubble2 = document.querySelector(".bubble2");
-const bubble3 = document.querySelector(".bubble3");
-const bubble4 = document.querySelector(".bubble4");
-
-// 🔥 Function to update diagram content
-function updateBubbles(btn) {
-    centerText.textContent = btn.dataset.solution;
-    bubble1.textContent = btn.dataset.bubble1;
-    bubble2.textContent = btn.dataset.bubble2;
-    bubble3.textContent = btn.dataset.bubble3;
-    bubble4.textContent = btn.dataset.bubble4;
-}
-
-// 🔥 Initialize on page load from first active button
 document.addEventListener("DOMContentLoaded", () => {
+
+    const buttons = document.querySelectorAll(".toggle-btn");
+    const centerText = document.getElementById("centerText");
+
+    const bubble1 = document.querySelector(".bubble1");
+    const bubble2 = document.querySelector(".bubble2");
+    const bubble3 = document.querySelector(".bubble3");
+    const bubble4 = document.querySelector(".bubble4");
+
+    // Function to update diagram content
+    function updateBubbles(btn) {
+        centerText.textContent = btn.dataset.solution;
+        bubble1.textContent = btn.dataset.bubble1;
+        bubble2.textContent = btn.dataset.bubble2;
+        bubble3.textContent = btn.dataset.bubble3;
+        bubble4.textContent = btn.dataset.bubble4;
+    }
+
+    // Initialize on first active button
     const activeBtn = document.querySelector(".toggle-btn.active") || buttons[0];
     updateBubbles(activeBtn);
-});
 
-// 🔥 Handle click
-buttons.forEach(btn => {
-    btn.addEventListener("click", () => {
-        buttons.forEach(b => b.classList.remove("active"));
-        btn.classList.add("active");
-        updateBubbles(btn);
+    // Handle click
+    buttons.forEach(btn => {
+        btn.addEventListener("click", () => {
+            buttons.forEach(b => b.classList.remove("active"));
+            btn.classList.add("active");
+            updateBubbles(btn);
+        });
     });
+
 });
 
 /* ---------------------------------------------------
@@ -380,3 +399,4 @@ var visionSwiper = new Swiper(".commitSwiper", {
         prevEl: ".commit-prev",
     }
 });
+

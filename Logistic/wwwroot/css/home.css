@@ -2190,19 +2190,33 @@ body {
   position: relative;
   width: 100%;
   height: 70vh;
-  background: url("/media/sustainability-banner.jpg") center/cover no-repeat;
+  overflow: hidden;
   display: flex;
   align-items: center;
   color: #fff;
+  /* Background image as real <img> */
+}
+.sustain-banner .banner-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  z-index: 0;
 }
 .sustain-banner .banner-overlay {
   position: absolute;
   inset: 0;
   background: rgba(0, 0, 0, 0.45);
+  z-index: 1;
 }
-.sustain-banner .breadcrumb-custom {
+.sustain-banner .breadcrumb-custom,
+.sustain-banner .banner-text {
   position: relative;
   z-index: 2;
+}
+.sustain-banner .breadcrumb-custom {
   margin-bottom: 20px;
 }
 .sustain-banner .breadcrumb-custom a {
@@ -2213,10 +2227,6 @@ body {
 }
 .sustain-banner .breadcrumb-custom a:hover {
   opacity: 1;
-}
-.sustain-banner .banner-text {
-  position: relative;
-  z-index: 2;
 }
 .sustain-banner .banner-text h1 {
   font-size: 58px;
@@ -2245,55 +2255,203 @@ body {
   text-align: left;
 }
 .growth-section .growth-title {
-  font-size: 24px;
-  font-weight: 600;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 20px;
-}
-.growth-section .growth-title .title-bar {
-  width: 4px;
-  height: 24px;
-  background: #009688;
-  display: inline-block;
+  border-left: 5px solid #18a790;
+  padding-left: 1.5rem;
+  font-size: 22px;
 }
 .growth-section .growth-short {
-  font-size: 16px;
-  color: #555;
-  max-width: 900px;
+  padding-left: 1.5rem;
 }
 .growth-section .growth-more {
-  font-size: 16px;
-  color: #555;
-  max-width: 900px;
-  margin-top: 20px;
   display: none;
+  margin-top: 20px;
+  font-size: 16px;
+  max-width: 900px;
+  padding-left: 1.5rem;
 }
 .growth-section .growth-more.open {
   display: block;
 }
-.growth-section .toggle-wrapper {
+.growth-section {
+  /* New Read More UI */
+}
+.growth-section .readmore-container {
   text-align: center;
   margin-top: 30px;
 }
-.growth-section .toggle-btn {
+.growth-section .readmore-container .readmore-text {
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 10px;
+}
+.growth-section .readmore-container .circle-btn {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
   background: #fff;
   border: none;
-  padding: 10px 18px;
-  border-radius: 30px;
-  font-size: 15px;
-  font-weight: 500;
   cursor: pointer;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.12);
+  transition: transform 0.25s ease;
 }
-.growth-section .toggle-btn .icon {
-  margin-left: 5px;
+.growth-section .readmore-container .circle-btn:hover {
+  transform: scale(1.12);
+}
+.growth-section .readmore-container .circle-btn .icon {
+  font-size: 20px;
   transition: transform 0.3s ease;
-  display: inline-block;
 }
-.growth-section .icon.rotate {
+.growth-section .readmore-container .circle-btn .icon.rotate {
   transform: rotate(180deg);
+}
+
+/* ---------------------------------------------------------
+   SUSTAIN SECTION
+--------------------------------------------------------- */
+.sustain-section {
+  background: #ebebeb;
+}
+.sustain-section .sustain-heading {
+  font-size: 22px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #333;
+}
+.sustain-section .sustain-heading .line {
+  height: 22px;
+  border-left: 5px solid #18a790;
+  padding-left: 1rem;
+}
+.sustain-section {
+  /* ---------------------------------------------------------
+     CARD WRAPPER
+  --------------------------------------------------------- */
+}
+.sustain-section .sus-main {
+  background: #000;
+  padding: 0;
+  border: 10px solid #ebebeb;
+  position: relative;
+  overflow: hidden;
+  transform: translateY(0) scale(1);
+  transition: ease all 0.6s;
+}
+.sustain-section .sus-main a {
+  text-decoration: none;
+}
+.sustain-section .sus-main:hover {
+  background: linear-gradient(to right, #1b9f94 0%, #316db3 100%);
+}
+.sustain-section .sus-main:hover .sustainability-block {
+  transform: translateY(0) scale(1.05);
+}
+.sustain-section .sus-main:hover .bg-images {
+  transform: translateY(0) scale(1.1);
+}
+.sustain-section .sus-main:hover .bg-images img {
+  opacity: 0.4;
+}
+.sustain-section .sus-main:hover .sustainability-block p:before {
+  bottom: 0;
+}
+.sustain-section .sus-main {
+  /* BG Images */
+}
+.sustain-section .sus-main .bg-images {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+  z-index: 0;
+  transform: translateY(0) scale(1);
+  transition: ease all 0.6s;
+}
+.sustain-section .sus-main .bg-images img {
+  border-radius: 0;
+  min-height: 100%;
+  min-width: 100%;
+  position: relative;
+  height: 100%;
+  max-width: 100%;
+  opacity: 1;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  transition: ease all 0.6s;
+}
+.sustain-section .sus-main {
+  /* ---------------------------------------------------------
+     TEXT BLOCK
+  --------------------------------------------------------- */
+}
+.sustain-section .sus-main .sustainability-block {
+  position: relative;
+  display: block;
+  padding: 3rem;
+  z-index: 2;
+  transition: all 0.6s ease;
+}
+.sustain-section .sus-main .sustainability-block h3 {
+  color: #fff;
+  font-size: 1.6rem;
+}
+.sustain-section .sus-main .sustainability-block h3 a {
+  color: #fff;
+}
+.sustain-section .sus-main .sustainability-block h3 a:hover {
+  color: #c3c3c3;
+}
+.sustain-section .sus-main .sustainability-block p {
+  margin-top: 3rem;
+  color: #fff;
+  min-height: 72px;
+  width: 70%;
+  position: relative;
+  padding-left: 20px;
+}
+.sustain-section .sus-main .sustainability-block p:before {
+  content: "";
+  position: absolute;
+  left: -20px;
+  height: 100%;
+  width: 5px;
+  background: #fff;
+  bottom: -250px;
+  transition: ease all 0.5s;
+}
+.sustain-section {
+  /* ---------------------------------------------------------
+     REPORT BLOCK (IF USED)
+  --------------------------------------------------------- */
+}
+.sustain-section .sus-report {
+  position: relative;
+  display: block;
+}
+.sustain-section .sus-r-title {
+  font-size: 1.4rem;
+  font-weight: 300;
+  margin-bottom: 2rem;
+}
+.sustain-section .sus-r-title span {
+  display: block;
+  font-weight: 600;
+}
+.sustain-section .sus-btn {
+  width: 100%;
+  bottom: 20px;
+  left: 0;
+}
+.sustain-section .sus-btn a {
+  color: #fff;
+}
+.sustain-section .sus-btn a:hover {
+  color: #fff;
+  text-decoration: underline;
 }
 
 /*# sourceMappingURL=home.css.map */

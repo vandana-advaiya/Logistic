@@ -1,18 +1,23 @@
 ﻿document.addEventListener("DOMContentLoaded", () => {
 
-    const ReadMoreButton = document.getElementById("ReadMoreButton");
     const moreContent = document.getElementById("moreContent");
+    const btn = document.getElementById("ReadMoreButton");
+    const icon = btn.querySelector(".icon");
+    const readText = document.querySelector(".readmore-text");
 
-    ReadMoreButton.addEventListener("click", () => {
+    btn.addEventListener("click", () => {
 
         const isOpen = moreContent.classList.toggle("open");
 
         if (isOpen) {
-            ReadMoreButton.innerHTML = `Read less <span class="icon rotate">&#x25B2;</span>`;
+            readText.textContent = "Read less";
+            icon.classList.add("rotate");
         } else {
-            ReadMoreButton.innerHTML = `Read more <span class="icon">&#x25BC;</span>`;
+            readText.textContent = "Read more";
+            icon.classList.remove("rotate");
         }
     });
+
 });
 
 const navLinks = document.querySelectorAll('.nav-link');

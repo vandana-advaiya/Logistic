@@ -1,7 +1,9 @@
 ﻿document.addEventListener("DOMContentLoaded", () => {
 
-    const moreContent = document.getElementById("moreContent");
     const btn = document.getElementById("ReadMoreButton");
+    if (!btn) return;   
+
+    const moreContent = document.getElementById("moreContent");
     const icon = btn.querySelector(".icon");
     const readText = document.querySelector(".readmore-text");
 
@@ -137,6 +139,8 @@ pins.forEach(pin => {
 document.addEventListener("DOMContentLoaded", () => {
 
     const buttons = document.querySelectorAll(".toggle-btn");
+    if (buttons.length === 0) return;
+
     const centerText = document.getElementById("centerText");
 
     const bubble1 = document.querySelector(".bubble1");
@@ -144,20 +148,20 @@ document.addEventListener("DOMContentLoaded", () => {
     const bubble3 = document.querySelector(".bubble3");
     const bubble4 = document.querySelector(".bubble4");
 
-    // Function to update diagram content
     function updateBubbles(btn) {
-        centerText.textContent = btn.dataset.solution;
-        bubble1.textContent = btn.dataset.bubble1;
-        bubble2.textContent = btn.dataset.bubble2;
-        bubble3.textContent = btn.dataset.bubble3;
-        bubble4.textContent = btn.dataset.bubble4;
+        if (!btn) return;
+
+        centerText.textContent = btn.dataset.solution || "";
+
+        bubble1.textContent = btn.dataset.bubble1 || "";
+        bubble2.textContent = btn.dataset.bubble2 || "";
+        bubble3.textContent = btn.dataset.bubble3 || "";
+        bubble4.textContent = btn.dataset.bubble4 || "";
     }
 
-    // Initialize on first active button
     const activeBtn = document.querySelector(".toggle-btn.active") || buttons[0];
     updateBubbles(activeBtn);
 
-    // Handle click
     buttons.forEach(btn => {
         btn.addEventListener("click", () => {
             buttons.forEach(b => b.classList.remove("active"));
@@ -196,9 +200,18 @@ const dotsContainer = document.querySelector(".pagination-dots");
 
 
 function setupSlider(grid) {
-    const slider = grid.querySelector(".media-slider");
 
-    const items = Array.from(slider.querySelectorAll(".media-item"));
+    if (!grid) return; // grid not found
+
+    const slider = grid.querySelector(".media-slider");
+    if (!slider) return; // slider missing for this tab
+
+    slider.classList.remove("ready");
+
+    let items = Array.from(slider.querySelectorAll(".media-item"));
+    if (!items.length) return; // no items available
+
+    // RESET
     slider.innerHTML = "";
     dotsContainer.innerHTML = "";
 
@@ -209,6 +222,7 @@ function setupSlider(grid) {
 
     const slides = [];
 
+    /* BUILD SLIDES */
     for (let i = 0; i < totalSlides; i++) {
         const slide = document.createElement("div");
         slide.classList.add("slide");
@@ -221,6 +235,7 @@ function setupSlider(grid) {
         slides.push(slide);
     }
 
+    /* PAGINATION DOTS */
     for (let i = 0; i < totalSlides; i++) {
         const dot = document.createElement("span");
         dot.classList.add("dot");
@@ -230,7 +245,9 @@ function setupSlider(grid) {
     }
 
     const dots = dotsContainer.querySelectorAll(".dot");
+    let currentSlide = 0;
 
+    /* DOT CLICK */
     dots.forEach(dot => {
         dot.addEventListener("click", () => {
             const index = parseInt(dot.dataset.index);
@@ -241,15 +258,11 @@ function setupSlider(grid) {
             slides[index].style.display = "grid";
             dot.classList.add("active");
 
-            currentSlide = index; // syncing for swipe
+            currentSlide = index;
         });
     });
 
-    /* ------------------------------
-       DRAG / SWIPE SLIDING
-    --------------------------------*/
-    let currentSlide = 0;
-
+    /* SWIPE HANDLER */
     slider.addEventListener("touchstart", startSwipe);
     slider.addEventListener("mousedown", startSwipe);
 
@@ -261,12 +274,10 @@ function setupSlider(grid) {
 
             if (moveX - startX < -50 && currentSlide < slides.length - 1) {
                 dots[currentSlide + 1].click();
-                currentSlide++;
                 cleanup();
             }
             if (moveX - startX > 50 && currentSlide > 0) {
                 dots[currentSlide - 1].click();
-                currentSlide--;
                 cleanup();
             }
         }
@@ -280,9 +291,9 @@ function setupSlider(grid) {
         slider.addEventListener("mousemove", move);
     }
 
-    // Enable popup clicking
     enablePopup(grid);
 }
+
 
 
 /* ---------------------------------------------------
@@ -313,22 +324,26 @@ setupSlider(firstGrid);
 
 
 /* ---------------------------------------------------
-   POPUP MODAL + POPUP SWIPER
+   POPUP MODAL + SWIPER — FULL SAFE
 ------------------------------------------------------*/
 const modal = document.getElementById("mediaModal");
 const popupSlides = document.getElementById("popupSlides");
 const closeModal = document.querySelector(".close-modal");
 const overlay = document.querySelector(".media-overlay");
 
-/* FIX: CLOSE MODAL */
-closeModal.addEventListener("click", (e) => {
-    e.stopPropagation();
-    modal.classList.add("d-none");
-});
+if (closeModal) {
+    closeModal.addEventListener("click", e => {
+        e.stopPropagation();
+        if (modal) modal.classList.add("d-none");
+    });
+}
 
-overlay.addEventListener("click", () => {
-    modal.classList.add("d-none");
-});
+if (overlay) {
+    overlay.addEventListener("click", () => {
+        if (modal) modal.classList.add("d-none");
+    });
+}
+
 
 
 /* ENABLE POPUP CLICK */
@@ -403,5 +418,42 @@ var visionSwiper = new Swiper(".commitSwiper", {
         nextEl: ".commit-next",
         prevEl: ".commit-prev",
     }
+});
+
+const dropdown = document.getElementById("yearDropdown");
+const sections = document.querySelectorAll(".year-section");
+const cards = document.querySelectorAll(".release-card");
+
+function showYear(year) {
+    sections.forEach(section => {
+        section.style.display = section.dataset.year === year ? "block" : "none";
+    });
+}
+
+dropdown.addEventListener("change", () => {
+    showYear(dropdown.value);
+});
+
+// Default load
+showYear(dropdown.value);
+
+// Click event for cards
+cards.forEach(card => {
+    card.addEventListener("click", () => {
+        const url = card.getAttribute("data-url");
+        if (url) window.location.href = url;
+    });
+});
+
+// /js/vision-commitment.js
+document.addEventListener('DOMContentLoaded', function () {
+    const carouselEl = document.querySelector('#commitmentCarousel');
+    if (!carouselEl || typeof bootstrap === 'undefined') return;
+
+    new bootstrap.Carousel(carouselEl, {
+        interval: 6000,  // auto-slide every 6s (change if you want)
+        ride: 'carousel',
+        pause: 'hover'
+    });
 });
 

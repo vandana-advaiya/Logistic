@@ -48,6 +48,19 @@ namespace Logistic.Controllers
             return View();
         }
 
+        [Route("newsroom")]
+        public IActionResult Newsroom()
+        {
+            return View();
+        }
+
+        [Route("media-release")]
+        public IActionResult MediaRelease()
+        {
+            return View();
+        }
+
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

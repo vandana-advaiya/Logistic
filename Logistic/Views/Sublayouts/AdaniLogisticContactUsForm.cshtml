@@ -6,90 +6,109 @@
         <div class="collab-form-wrapper">
 
             <form>
-
                 <div class="row g-4">
 
                     <!-- Full Name -->
                     <div class="col-md-6">
                         <label class="form-label">Full Name *</label>
-                        <input type="text" class="form-control" placeholder="John Doe">
+                        <input type="text" id="fullName" class="form-control" placeholder="John Doe">
+                        <small class="error-msg"></small>
                     </div>
 
                     <!-- Email -->
                     <div class="col-md-6">
                         <label class="form-label">Email *</label>
-                        <input type="email" class="form-control" placeholder="john@company.com">
+                        <input type="email" id="email" class="form-control" placeholder="john@company.com">
+                        <small class="error-msg"></small>
                     </div>
 
                     <!-- Phone Number -->
                     <div class="col-md-6">
                         <label class="form-label">Phone Number</label>
-                        <input type="text" class="form-control" placeholder="+1 (555) 123-4567">
+                        <input type="text" id="phone" class="form-control" placeholder="+1 (555) 123-4567">
+                        <small class="error-msg"></small>
                     </div>
 
                     <!-- Company Name -->
                     <div class="col-md-6">
                         <label class="form-label">Company Name</label>
-                        <input type="text" class="form-control" placeholder="ACME Corp">
+                        <input type="text" id="company" class="form-control" placeholder="ACME Corp">
+                        <small class="error-msg"></small>
                     </div>
 
                     <!-- Space Required -->
                     <div class="col-md-6">
-                        <label class="form-label">Space Required</label>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <label class="form-label mb-0">Space Required</label>
 
-                        <div class="space-wrapper d-flex align-items-center gap-2">
-                            <input type="text" class="form-control" placeholder="Select Space Size">
+                            <!-- Radio buttons to the right -->
+                            <div class="unit-option d-flex align-items-center gap-3">
+                                <label class="unit-label">
+                                    <input type="radio" name="unit" value="Sq.Ft." checked>
+                                    Sq.Ft.
+                                </label>
 
-                            <div class="unit-option d-flex align-items-center gap-2">
-                                <label><input type="radio" name="unit" checked> Sq.Ft.</label>
-                                <label><input type="radio" name="unit"> Sq.Mt.</label>
+                                <label class="unit-label">
+                                    <input type="radio" name="unit" value="Sq.Mt.">
+                                    Sq.Mt.
+                                </label>
                             </div>
                         </div>
+
+                        <!-- Input box below -->
+                        <div class="space-wrapper mt-2">
+                            <input type="number"
+                                   class="form-control space-input"
+                                   placeholder="Enter Space Size" />
+                        </div>
+
+                        <small class="error-msg"></small>
                     </div>
 
-                    <!-- Agreement Term -->
+                    <!-- Agreement -->
                     <div class="col-md-6">
-                        <label class="form-label">Agreement Term (Years)</label>
-                        <select class="form-select">
-                            <option>Select Duration</option>
+                        <label class="form-label">Agreement term (Years)</label>
+                        <select class="form-select" id="agreement">
+                            <option value="">Select Duration</option>
                             <option>1 Year</option>
                             <option>3 Years</option>
                             <option>5 Years</option>
                         </select>
+                        <small class="error-msg"></small>
                     </div>
 
-                    <!-- Warehouse Location -->
+                    <!-- Warehouse -->
                     <div class="col-md-6">
                         <label class="form-label">Select Warehouse Location*</label>
-                        <select class="form-select">
-                            <option>Select Warehouse Location</option>
+                        <select class="form-select" id="location">
+                            <option value="">Select Warehouse Location</option>
                         </select>
+                        <small class="error-msg"></small>
                     </div>
 
                     <!-- Category -->
                     <div class="col-md-6">
                         <label class="form-label">Category*</label>
-                        <select class="form-select">
-                            <option>Select Warehouse Category</option>
+                        <select class="form-select" id="category">
+                            <option value="">Select Warehouse Category</option>
                         </select>
+                        <small class="error-msg"></small>
                     </div>
 
-                    <!-- Additional Requirements -->
+                    <!-- Requirements -->
                     <div class="col-12">
                         <label class="form-label">Additional Requirements</label>
-                        <textarea class="form-control" rows="3" placeholder="Tell us about any special requirements..."></textarea>
+                        <textarea class="form-control" id="requirements" rows="3" placeholder="Tell us about any special requirements..."></textarea>
+                        <small class="error-msg"></small>
                     </div>
 
-                    <!-- Submit Button -->
                     <div class="col-12 text-center mt-2">
-                        <button type="submit" class="collab-btn">
-                            Submit →
-                        </button>
+                        <button type="submit" class="collab-btn" id="submitBtn">Submit →</button>
                     </div>
 
                 </div>
-
             </form>
+
         </div>
 
     </div>

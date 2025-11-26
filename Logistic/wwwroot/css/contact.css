@@ -82,6 +82,7 @@
   object-fit: cover;
   width: 100%;
   height: auto;
+  padding: 2rem;
 }
 .contact-section .office-info {
   padding-left: 16px;
@@ -123,6 +124,37 @@
     padding-top: 15px;
     margin-top: 20px;
   }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.7s ease-out;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.fade-up {
+  transform: translateY(40px);
+}
+
+.fade-left {
+  transform: translateX(40px);
+}
+
+.fade-right {
+  transform: translateX(-40px);
+}
+
+.zoom-in {
+  transform: scale(0.85);
+}
+
+.zoom-in.active {
+  transform: scale(1);
 }
 
 /*# sourceMappingURL=contact.css.map */
